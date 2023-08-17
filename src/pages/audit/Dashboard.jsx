@@ -2,8 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 // import Charts from "../../components/portal-shared/Charts";
-// import PieChart from "../../components/portal-shared/PieChart";
-import { Link } from "react-router-dom";
+
 import { useState, useEffect} from "react";
 import {baseURL,imgURL } from "../../baseurl"
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
