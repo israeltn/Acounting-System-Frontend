@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@media print {
+    /* Set A4 size dimensions */
+    @page {
+      size: A4;
+      margin: 0;
+      width: 100%;
+    }
+
+    button {
+        display: none;
+      }
+      nav{
+        display: none;
+      }
+  
+    /* Remove unnecessary elements from printing */
+    /* body * {
+      visibility: hidden;
+    } */
+  
+    /* Show only specific elements for printing */
+    .printable-content {
+      visibility: visible;
+    }
+  }
