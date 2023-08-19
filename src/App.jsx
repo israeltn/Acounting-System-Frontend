@@ -35,6 +35,7 @@ import CashAdvanceEdit from "./pages/dashboard/EditCashAdvance"
 import AllRetirementVoucher from "./pages/dashboard/AllRetirementVoucher"
 import AuditedCashAdvance from "./pages/dashboard/AuditedCashAdvance"
 import PaidCashAdvance from "./pages/dashboard/PaidCashAdvance"
+import CapitalList from "./pages/dashboard/cash-office/capital/AllCapital"
 
 
 
@@ -69,6 +70,11 @@ function App() {
                         <Route path = "all-retirement"element = { < AllRetirementVoucher /> }/> 
                         <Route path = "audited-cashadvance"element = { < AuditedCashAdvance /> }/> 
                         <Route path = "paid-cashadvance"element = { < PaidCashAdvance /> }/> 
+
+                          {/* Cash Office */}
+                        
+                        <Route path = "capital"element = { < CapitalList /> }/> 
+                        
                         
 
         </Route>
@@ -80,14 +86,19 @@ function App() {
                         <Route index element = { < StaffDashboard />} /> 
                             </StaffElement > }>
                         <Route index element = {< StaffDashboard />}/>   
-                        <Route path = "updateprofile"element = { < UpdateUserProfile /> }/>                 
+
+                        <Route path = "updateprofile"element = { < UpdateUserProfile /> }/> 
+
+                        {/* CashAdvance */}
                         <Route path = "cashadvance"element = { < CashAdvanceList /> }/> 
                         <Route path = "edit-cashadvance/:id"element = { < EditCashAdvance /> }/> 
                         <Route path = "chashadvanceform"element = { < ChashadvanceForm /> }/> 
+
+                         {/* Retirement */}
                         <Route path = "retirementform"element = { < RetirementForm /> }/> 
                         <Route path = "retirementvoucher"element = { < StaffRetirement /> }/> 
-                        
 
+                        
         </Route>
             { /* Staff Routes  */ } 
 
