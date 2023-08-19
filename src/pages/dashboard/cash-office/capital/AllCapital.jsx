@@ -7,6 +7,7 @@ import { FiEye } from 'react-icons/fi';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { TbCurrencyNaira } from 'react-icons/tb'; 
 import { BiMessageSquareAdd } from 'react-icons/bi';
+
 const AllCapital = () => {
 
     const [loading, setLoading] = useState(true);
@@ -128,31 +129,41 @@ const AllCapital = () => {
     <div className="grid grid-cols-1 mx-12 mt-4 ">
     <div className="my-6">
     <div className="flex mx-3 flex-col">
-    <div className="flex md:justify-start md:items-start text-center">
-                       
-                  
-      </div>
-                <div class="md:flex items-center justify-between mx-4 mt-2">
-
-                <div className="mb-4 justify-start items-start ">
-                <h2 class="text-gray-600 mx-2 mt-2  md:text-xl text-xs font-semibold text-center">
-                          Latest Cash Advance
+            <div className="flex md:justify-start md:items-start text-center">
+                        <h2 class="text-gray-600 mx-4 mt-2 my-4 md:text-xl text-sm font-semibold text-center">
+                          Latest Capital
                         </h2>
-                
-                  </div>
-                 
-                  <div className="mb-4 justify-center items-center ">
-                    <input
-                      type="text"
-                      placeholder="Search by date:2023-08-05, title, amount , bank..."
-                      className="border-gray-400 w-[20rem]  hover:border-green-600 border-2 h-7 p-2 text-xs rounded-lg"
-                      value={searchQuery}
-                      onChange={event => setSearchQuery(event.target.value)}
-                    />
-                
-                  </div>
                   
-                </div>
+            </div>
+             
+            <div class="md:flex items-center justify-between mx-4 mt-2">
+
+                        <div className="flex md:justify-start md:items-end space-x-2">
+                            <Link  to="/userdashboard/chashadvanceform"
+                            className="flex mb-2 text-black h-7   text-center w-[7rem] justify-center p-1 items-center border-2 border-gray-400  hover:border-green-600 rounded-md">
+                            <div className="flex justify-center items-center" >
+                                    
+                                    <span className="inline-block text-black text-xs  mr-1"> Add New  </span>                            
+                                    <BiMessageSquareAdd className="flex  w-[20px] text-red-700  text-xs text-center" />
+                                </div>
+                            </Link>
+                            
+                        </div>
+
+                        <div className="mb-4 justify-center items-center ">
+                        <input
+                            type="text"
+                            placeholder="Search by title, amount, bank..."
+                            className="border-gray-400  hover:border-green-600 border-2 h-7 p-2 text-xs rounded-lg"
+                            value={searchQuery}
+                            onChange={event => setSearchQuery(event.target.value)}
+                        />
+
+                        </div>
+
+            </div>
+                  
+              
                 {loading ? (
                     <div className="text-center max-w-screen-xl max-h-screen-[72] mx-auto justify-center items-center ">
                     <div role="status" className="mt-[20rem]">
