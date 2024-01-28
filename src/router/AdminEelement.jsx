@@ -81,10 +81,10 @@ return(
  {/* NavBar  */}
  <NavBa />
 
-<div className="flex overflow-hidden bg-white  pt-12">
+<div className="flex overflow-hidden bg-blue-50  pt-12">
 
 <div className="bg-gray-900 opacity-50 hidden fixed inset-0 z-10" id="sidebarBackdrop"></div>
-<div id="main-content" className="h-full w-full bg-white relative overflow-y-auto lg:ml-64">
+<div id="main-content" className="h-full w-full bg-blue-50 relative overflow-y-auto lg:ml-64">
       
        <Outlet/> 
 

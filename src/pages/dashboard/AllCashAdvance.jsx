@@ -6,7 +6,7 @@ import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 import { FiEye } from 'react-icons/fi'; 
 import { AiOutlineDelete } from 'react-icons/ai';
 import { TbCurrencyNaira } from 'react-icons/tb'; 
-import { BiMessageSquareAdd } from 'react-icons/bi';
+// import { BiMessageSquareAdd } from 'react-icons/bi';
 const AllCashAdvance = () => {
 
     const [loading, setLoading] = useState(true);
@@ -260,7 +260,7 @@ const AllCashAdvance = () => {
                           </td>
                             
                           <td className="px-6 py-4 whitespace-nowrap">                              
-                            <div className="flex text-xs font-medium text-gray-900"> <TbCurrencyNaira className="text-xl text-center"/>{item.amount}</div>                
+                            <div className="flex text-xs font-medium text-gray-900"> <TbCurrencyNaira className="text-xl text-center"/>{item.formatted_price}</div>                
                                                       
                           </td>
 

@@ -36,6 +36,11 @@ import AllRetirementVoucher from "./pages/dashboard/AllRetirementVoucher"
 import AuditedCashAdvance from "./pages/dashboard/AuditedCashAdvance"
 import PaidCashAdvance from "./pages/dashboard/PaidCashAdvance"
 import CapitalList from "./pages/dashboard/cash-office/capital/AllCapital"
+import AddCapital from "./pages/dashboard/cash-office/capital/AddCapital"
+
+import OverheadList from "./pages/dashboard/cash-office/overhead/AllOverhead"
+import AddOverhead from "./pages/dashboard/cash-office/overhead/AddOverhead"
+
 
 
 
@@ -74,6 +79,10 @@ function App() {
                           {/* Cash Office */}
                         
                         <Route path = "capital"element = { < CapitalList /> }/> 
+                        <Route path = "add-capital"element = { < AddCapital /> }/> 
+
+                        <Route path = "over-head"element = { < OverheadList /> }/>
+                        <Route path = "add-overhead"element = { < AddOverhead /> }/> 
                         
                         
 

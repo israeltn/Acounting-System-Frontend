@@ -8,7 +8,7 @@ import { AiOutlineDelete } from 'react-icons/ai';
 import { TbCurrencyNaira } from 'react-icons/tb'; 
 import { BiMessageSquareAdd } from 'react-icons/bi';
 
-const AllCapital = () => {
+const AllStaffClaims = () => {
 
     const [loading, setLoading] = useState(true);
     // const url = baseURL +`/approved-cashadvance/`;
@@ -86,7 +86,7 @@ const AllCapital = () => {
     <div className="flex mx-3 flex-col">
             <div className="flex md:justify-start md:items-start text-center">
                         <h2 class="text-gray-600 mx-4 mt-2 my-4 md:text-xl text-sm font-semibold text-center">
-                          Latest Capital
+                          Latest Staff Claims
                         </h2>
                   
             </div>
@@ -148,10 +148,10 @@ const AllCapital = () => {
             
                     <table className="min-w-full divide-y divide-gray-200">
                       <thead className="bg-gray-400">
-                        <tr className="">
+                        <tr>
                           <th
                             scope="col"
-                            className="px-3 py-2 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
                           >
                             S/N
                           </th>
@@ -159,13 +159,13 @@ const AllCapital = () => {
                             scope="col"
                             className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
                           >
-                            Title
+                            Staff No:
                           </th>
                           <th
                             scope="col"
                             className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
                           >
-                            Code
+                            Staff Name
                           </th>
                           <th
                             scope="col"
@@ -209,8 +209,12 @@ const AllCapital = () => {
                     {viewCashAdvance.map((item,i) => (
                        
                         <tr>
-                          <td className="px-3 py-2 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap">
                             <div className="text-xs font-medium text-gray-900">{i + 1}</div>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap  ">
+                            <p className="text-xs font-medium text-gray-900">{item.title} </p>
+                            
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap  ">
                             <p className="text-xs font-medium text-gray-900">{item.title} </p>
@@ -295,4 +299,4 @@ const AllCapital = () => {
   )
 
 };
-export default AllCapital;
+export default AllStaffClaims;

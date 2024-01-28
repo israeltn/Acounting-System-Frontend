@@ -124,7 +124,7 @@ const Dashboard = () => {
   return (
     <div>
       <main>
-        <div className="py-6 px-4 bg-gray-100">
+        <div className="py-6 px-4 bg-blue-50">
         <div className="mt-4 w-full  grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4">
                 {/* Total section */}
              

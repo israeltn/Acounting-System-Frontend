@@ -129,25 +129,25 @@ if(loading)
         <div className=" w-full h-auto  border-b-4 mx-2  rounded-lg p-2 sm:p-6 xl:py-1 ">
     <div className="bg-white  justify-center rounded-md  items-center max-w-screen-xl mx-auto">
         
-    <div className="container m-auto px-6 space-y-8 md:px-12 lg:px-6">  
+    <div className="container m-auto px-6 space-y-8 md:px-12 lg:px-3">  
           
        
               
                <div className="container justify-center items-center max-w-screen-xl mx-auto">
                
-                <div  className="w-full  justify-center items-center max-w-screen-xl mx-auto  border-2 ">
+                <div  className="w-full  justify-center items-center max-w-screen-xl mx-auto  border-11 ">
                 <div className=" py-3  mx-auto max-w-screen-xl text-center  px-2 justify-center items-center">
                         {/* <div className='flex w-full justify-center items-center'>
                         <img src={RNALogo} className=" md:w-[80px] w-[50px] justify-center items-center flex" alt="Windster Logo" />
                     </div> */}
-                    <h2 className=" text-lg  uppercase dark:bg-gray-900 font-bold ">Federel Radio Corporation of Nigeria</h2>
-                    <h2 className=" uppercase dark:bg-gray-900 font-bold text-lg">Cash Advance </h2>
+                    <h2 className=" md:text-xs  uppercase dark:bg-gray-900 font-bold ">Federel Radio Corporation of Nigeria</h2>
+                    <h2 className=" uppercase dark:bg-gray-900 font-bold md:text-xs">Cash Advance </h2>
                 </div>
                     <div className="flex flex-wrap  mb-2 justify-center items-center mx-2">
                         <div className="px-3 w-full justify-center items-center pt-1 ">
                             <label className="flex " for="grid-prefex">
-                             <span className='block uppercase tracking-wide text-gray-700    text-sm font-bold '>Payee:</span>  
-                             <span className='text-center text-sm pl-2'>{viewUser.first_name} {viewUser.last_name}</span>
+                             <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold '>Payee:</span>  
+                             <span className='text-center text-xs pl-2'>{viewUser.first_name} {viewUser.last_name}</span>
                              </label>                       
                         
                         </div>
@@ -155,8 +155,8 @@ if(loading)
                     <div className="flex flex-wrap mx-2  border-gray-200 ">
                         <div className="w-full md:w-1/4 px-3  md:mb-0  ">
                         <label className="flex  " >
-                                <span className='block uppercase tracking-wide text-gray-700 text-sm font-bold '> Staff No:</span>  
-                             <span className='text-center text-sm pl-2'> {viewUser.staff_number}</span>
+                                <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold '> Staff No:</span>  
+                             <span className='text-center text-xs pl-2'> {viewUser.staff_number}</span>
                           
                         </label>                        
                        
@@ -166,8 +166,8 @@ if(loading)
                     <div className="flex flex-wrap mx-2 m-2 ">
                         <div className="w-full px-3 mb-2">                        
                         <label className="flex  " >
-                                <span className='block uppercase tracking-wide text-gray-700 text-sm font-bold '> Address:</span>  
-                             <span className='text-center text-sm pl-2'> {userProfile.address}</span>
+                                <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold '> Address:</span>  
+                             <span className='text-center text-xs pl-2'> {userProfile.address}</span>
                           
                         </label> 
                        
@@ -177,16 +177,16 @@ if(loading)
                     <div className="flex flex-wrap mx-2 ">
                         <div className="w-full md:w-1/2 px-3 ">
                         <label className="flex  mb-2" >
-                                <span className='block uppercase tracking-wide text-gray-700 text-sm font-bold '> Beneficiary Bank A/C No:</span>  
-                             <span className='text-center text-sm pl-2'> {viewCashAdvance.account_number} </span>
+                                <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold '> Beneficiary Bank A/C No:</span>  
+                             <span className='text-center text-xs pl-2'> {viewCashAdvance.account_number} </span>
                           
                         </label>   
                         
                         </div>
                         <div className="w-full md:w-1/2 px-3">
                         <label className="flex  mb-2" >
-                                <span className='block uppercase tracking-wide text-gray-700 text-sm font-bold'> Bank:</span>  
-                             <span className='text-center text-sm pl-2'> {viewCashAdvance.bank}</span>
+                                <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold'> Bank:</span>  
+                             <span className='text-center text-xs pl-2'> {viewCashAdvance.bank}</span>
                           
                         </label>   
                         
@@ -195,19 +195,19 @@ if(loading)
                     <div className="flex flex-wrap mx-2 m-2 ">
                         <div className="w-full px-3 mb-2">                        
                         <label className="flex  " >
-                                <span className='block uppercase tracking-wide text-gray-700 text-sm font-bold '>  Sort Code:</span>  
-                             <span className='text-center text-sm pl-2'>{viewCashAdvance.sort_code}</span>
+                                <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold '>  Sort Code:</span>  
+                             <span className='text-center text-xs pl-2'>{viewCashAdvance.sort_code}</span>
                           
                         </label> 
                        
                         
                         </div>
                     </div>
-                    <div className="flex flex-wrap mx-2 mb-4 ">
+                    <div className="flex flex-wrap mx-2 mb-2 ">
                         <div className="w-full md:w-1/2 px-3  md:mb-0">
-                        <label className="flex  " >
-                                <span className='block uppercase tracking-wide text-gray-700 text-sm font-bold '> Department:</span>  
-                             <span className='text-center text-sm pl-2'>{userProfile.department}</span>
+                        <label className="flex mb-2  " >
+                                <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold '> Department:</span>  
+                             <span className='text-center text-xs pl-2'>{userProfile.department}</span>
                           
                         </label>                                             
                    
@@ -215,8 +215,8 @@ if(loading)
                         <div className="w-full md:w-1/2 px-3">
 
                         <label className="flex  " >
-                                <span className='block uppercase tracking-wide text-gray-700 text-sm font-bold '> Designation:</span>  
-                             <span className='text-center text-sm pl-2'>{userProfile.degnisation}</span>
+                                <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold '> Designation:</span>  
+                             <span className='text-center text-xs pl-2'>{userProfile.degnisation}</span>
                           
                         </label>                        
                         
@@ -224,21 +224,21 @@ if(loading)
                     </div>
                    
                  
-                    <div className="flex flex-wrap mx-2 mb-8">
-                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <div className="flex flex-wrap mx-2 mb-6">
+                         <div className="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                             <label className=" mb-2" for="grid-city">
-                             <span className='block uppercase tracking-wide text-gray-700 text-sm font-bold '> Amount:</span>
+                             <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold '> Amount:</span>
                             </label>
-                            <div className="flex appearance-none text-sm pl-2  w-full  text-gray-700 border   py-3 px-4 mb-3 " >
-                            <TbCurrencyNaira className="text-xl text-center"/> {viewCashAdvance.amount} 
+                            <div className="flex appearance-none text-xs pl-2  w-full  text-gray-700 border   py-1 px-4 mb-1 " >
+                            <TbCurrencyNaira className="text-md text-center"/> {viewCashAdvance.amount} 
                             </div>
                             
                         </div>
                         <div className="w-full md:w-1/2 px-3  ">
                             <label className="mb-2" for="grid-city">
-                                     <span className='block uppercase tracking-wide text-gray-700 text-sm font-bold '>  Supporting Ducument:</span>
+                                     <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold '>  Supporting Ducument:</span>
                             </label>
-                            <div className="appearance-none text-sm pl-2 block w-full  text-gray-700 border   py-3 px-4  " >
+                            <div className="appearance-none text-xs pl-2 block w-full  text-gray-700 border   py-1 px-4  " >
                            
                             <a href={viewCashAdvance.supporting_documents}target="_blank" rel="noopener noreferrer">
                                 Click View  Supporting Ducument
@@ -252,9 +252,9 @@ if(loading)
                     <div className="flex flex-wrap mx-2 mb-2">
                         <div className="w-full px-3">
                         <label className="" for="grid-password">
-                              <span className='block uppercase tracking-wide text-gray-700 text-sm font-bold '>Description of Cash Advance:</span>
+                              <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold '>Description of Cash Advance:</span>
                         </label>
-                        <div className="appearance-none text-sm pl-2 block w-full h-[5rem]   text-gray-700 border   py-3 px-4 mb-3 " >
+                        <div className="appearance-none text-xs pl-2 block w-full h-[5rem]   text-gray-700 border   py-1 px-4 mb-3 " >
                         {viewCashAdvance.discription}
                        </div>
                         
@@ -265,27 +265,27 @@ if(loading)
                        
                        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                             <span className='block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2'>Prepare By:</span>
+                             <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Prepare By:</span>
                        </label>
-                       <div className="appearance-none text-sm pl-2 block w-full  text-gray-700 border   py-3 px-4 mb-3 " >
+                       <div className="appearance-none text-xs pl-2 block w-full  text-gray-700 border   py-1 px-4 mb-3 " >
                         {viewUser.first_name} {viewUser.last_name}
                        </div>
                        </div>
                        <div className="w-full md:w-1/3 mb-6 px-3">
                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-orgnization">
-                                  <span className='block uppercase tracking-wide text-gray-700 text-sm font-bold '>Approved by HOD <i class="fas fa-hand-holding-heart    "></i> </span>
+                                  <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold '>Approved by HOD <i class="fas fa-hand-holding-heart    "></i> </span>
                        </label>
-                       <div className="appearance-none text-sm pl-2 block w-full  text-gray-700 border   py-3 px-4 " >
+                       <div className="appearance-none text-xs pl-2 block w-full  text-gray-700 border   py-1 px-4 " >
                            {userProfile.department}
                        </div>
                        
                        </div>
                        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                            <span className='block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2'>Date </span>
+                            <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Date </span>
                        </label>
                              
-                      <div className="appearance-none text-sm pl-2 block w-full  text-gray-700 border   py-3 px-4 " >
+                      <div className="appearance-none text-xs pl-2 block w-full  text-gray-700 border   py-1 px-4 " >
                          {viewCashAdvance.formatted_date}
                        </div>
                        
@@ -297,23 +297,24 @@ if(loading)
                </div>
 
                <form onSubmit={handleSubmit}> 
-                    <div className="flex flex-wrap  mx-2 mt-20 mb-4 justify-center items-center">
+                    <div className="flex flex-wrap  mx-2 mt-3 mb-1 justify-center items-center">
                         <div className="px-3 w-full justify-center items-center ">
-                            <label className="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2" for="grid-prefex">
+                            <label className="block uppercase tracking-wide text-red-500 text-sm font-bold mb-2" for="grid-prefex">
                             Account Office:
                         </label>                       
                         
                         </div>
                     </div>
-            <div className="flex flex-wrap w-[30rem] mx-2 mb-6">
-                    <div className="w-full justify-center  px-3 mb-6 md:mb-0">
+            <div className="flex flex-wrap w-[30rem] mx-2 mb-3">
+                    <div className="w-full justify-center  px-3 mb-2 md:mb-0">
                          <label className=" flex uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-gender">
                             Cash Advance Status: {viewCashAdvance.is_approved === 'approved' ? <span className="pb-2 mb-2 pl-2 text-xs text-green-600">Approved</span>  :  
-                            <span className="pl-2 pb-2 mb-2 text-xs text-red-600">Not Approved</span> }
+                            <span className="pl-2 pb-2 mb-2 text-xs text-red-600"></span> ? <span className="pb-2 mb-2 pl-2 text-xs text-green-600">{viewCashAdvance.is_approved}</span>  :  
+                            <span className="pl-2 pb-2 mb-2 text-xs text-red-600"></span>} 
                         </label>
 
-                        <div className="relative md:w-1/2 mt-2">
-                            <select value={isApproved} onChange={handleApprovalChange} className="block   appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder={viewCashAdvance.is_approved === 'approved' ? 'Approved'  :  'Not Approved'} required id="grid-gender">
+                        <div className="relative md:w-1/2 mt-2 text-xs">
+                            <select value={isApproved} onChange={handleApprovalChange} className="block text-xs   appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-1 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder={viewCashAdvance.is_approved === 'approved' ? 'Approved'  :  'Not Approved'} required id="grid-gender">
                                    
                                     <option>Select</option>
                                     <option value="approved">Approved</option>
@@ -323,20 +324,20 @@ if(loading)
                             
                            
                             
-                            {/* <span className="pb-2 mb-2 text-sm text-red-600">
+                            {/* <span className="pb-2 mb-2 text-xs text-red-600">
                             {viewCashAdvance.is_approved === 'account' ? 'Account Approved'  :  'Not Approved'}
                             </span> */}
                         </div>
                     </div>
             </div>
 
-        <div className="flex flex-wrap mx-2 mb-3">
+        <div className="flex flex-wrap mx-2 mb-2">
                         <div className="w-full px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                         Remark:
                         </label>
-                        <textarea type="text"  onChange={handleAccountRemarkChange}    value={accountRemark} name="accountRemark" placeholder={viewCashAdvance.account_remark} className="appearance-none h-[8rem] block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" required  />
-                        <span className="pb-2 mb-2 text-sm text-red-600"></span>
+                        <textarea type="text"  onChange={handleAccountRemarkChange}    value={accountRemark} name="accountRemark" placeholder={viewCashAdvance.account_remark} className="appearance-none h-[8rem] block w-full bg-gray-200 text-black border border-gray-200 rounded py-1 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" required  />
+                        <span className="pb-2 mb-2 text-xs text-red-600"></span>
                         </div>
         </div>
       <div>
@@ -344,17 +345,17 @@ if(loading)
       </div>
                 <div className="w-full item-center justify-center flex space-x-2 mb-6">
                     <NavLink  to="/dashboard/cashadvancelist"
-                    className=" mb-2  text-center w-1/6 justify-center py-2 px-2 items-center bg-gradient-to-r from-green-600 to-green-800  text-white border-gray-800 rounded-md">
+                    className=" mb-2  text-center w-1/7 justify-center p-1  items-center bg-gradient-to-r from-green-600 to-green-800  text-white border-gray-800 rounded-md">
                        <button className='' >
                             
-                            <span className="inline-block text-sm mr-2"> Back </span>
+                            <span className="inline-block text-xs mr-2"> Back </span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 inline-block">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                            
                         </button>
                     </NavLink>
-                    <button  type="submit" disabled={isSubmitting} className=" mb-2  text-center w-1/6 justify-center py-2 px-2 items-center bg-gradient-to-r from-green-600 to-green-800  text-white border-gray-800 rounded-md">
+                    <button  type="submit" disabled={isSubmitting} className=" mb-2 text-xs  text-center w-1/7 justify-center py-2 px-2 items-center bg-gradient-to-r from-green-600 to-green-800  text-white border-gray-800 rounded-md">
                         <span className="inline-block mr-2"> {isSubmitting ? "Submitting Data..." : "Submit"} </span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 inline-block">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />

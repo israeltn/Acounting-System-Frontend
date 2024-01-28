@@ -16,10 +16,9 @@ import { GiTakeMyMoney } from 'react-icons/gi';
 
 
 
-
-
-
 const NavBa = () => {
+  const [activeSidebar, setActiveSidebar] = useState(null);
+  const [isDropdownActive, setIsDropdownActive] = useState(false);
    const navigate = useNavigate();
    const [isOpen, setIsOpen] = useState(false);
       const toggleDropdown = () => {
@@ -38,8 +37,18 @@ const NavBa = () => {
   const [openInvoice, setOpenInvoice] = useState(false);
   const invoiceDropdown = () => {
     setOpenInvoice(!openInvoice);
-};
+  };
 
+
+  const handleSidebarClick = (sidebar) => {
+    setActiveSidebar(sidebar);
+    setIsDropdownActive(true);
+  };
+
+  const handleSidebarLeave = () => {
+    setActiveSidebar(null);
+    setIsDropdownActive(false);
+  };
   const [navbar, setNavbar] = useState(false); 
   const [status, setStatus] = useState(false);
   const [profile, setProfile]= useState();
@@ -99,6 +108,7 @@ const NavBa = () => {
    
      
 }, []);
+
 
 const logoutSubmit = () => {
   setAuthToken(null)
@@ -208,7 +218,7 @@ const logoutSubmit = () => {
       <div className="shadow-md border-1 ">
         <aside
           id="sidebar"
-          className={`fixed block z-40 bg-white h-full top-0 left-0 pt-0 lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75 " aria-label="Sidebar "
+          className={`fixed block z-40 bg-white h-full top-0 left-0 pt-0 lg:flex flex-shrink-0 flex-col w-[257px] transition-width duration-75 " aria-label="Sidebar "
           ${navbar ? "block" : "hidden"}`}
         >
           <div className=" flex-1 flex flex-col lg:min-h-0 min-h-screen shodow-md border-gray-200 pt-0">
@@ -254,7 +264,7 @@ const logoutSubmit = () => {
                 </button>
                 <Link
                   to="/"
-                  className="text-lg no-underline font-bold flex items-center lg:ml-2.5"
+                  className="text-md no-underline font-bold flex items-center lg:ml-2.5"
                 >              
                   
                   <img src={RNALogo} className="mr-2 w-[50px]" alt="Windster Logo" />
@@ -289,6 +299,7 @@ const logoutSubmit = () => {
                             status ? (
                               <NavLink                            
                               to= "/dashboard/users"
+                              onClick={() => handleSidebarClick('user')}
                               className="text-base no-underline hover:text-gray-900 text-white   font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                               
                             >
@@ -315,7 +326,8 @@ const logoutSubmit = () => {
                             ( 
                               // disabled menu
                               <Link  
-                              to="/dashboard/users"                       
+                              to="/dashboard/users"    
+                              onClick={() => handleSidebarClick('user')}                   
                               className="text-base no-underline text-gray-600 hover:text-black  font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                               
                             >
@@ -344,36 +356,48 @@ const logoutSubmit = () => {
                                       
 
                      {/* Cash Office Operation */}
+
+                     <div  
+                    
+                         onClick={() => handleSidebarClick('cash_office')}
+                        >
+                          
                     <li>
                       <Link
                         to="#"
-                        onClick={cashofficeDropdown}
-                        className="text-base no-underline text-gray-600 hover:text-black  font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
-                      >
-                        <GiTakeMyMoney className="w-6 h-6 text-gray-600 flex-shrink-0 group-hover:text-black transition duration-75"/>
                       
-
-                        <span className="ml-3 flex-1 whitespace-nowrap hover:text-black">
+                     
+                        className={`${ activeSidebar === 'cash_office' ? 'text-base no-underline text-gray-600 hover:text-black  font-normal rounded-lg bg-gray-200 flex items-center p-2 group'
+                        : 
+                        'text-base no-underline text-gray-600 hover:text-black  font-normal rounded-lg hover:bg-gray-200 flex items-center p-2 group' }`}
+                      >
+                        {activeSidebar === 'cash_office' ?<GiTakeMyMoney className="w-6 h-6 text-gray-800 flex-shrink-0 group-hover:text-gray-800 transition duration-75"/>:
+                          <GiTakeMyMoney className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-600 transition duration-75"/>
+                        }
+                      
+                        <span className="ml-3 flex-1 whitespace-nowrap hover:text-black"
+                          
+                        >
                         Cash Office
                         </span>
-                        {openInvoice ===true ? <BiSolidChevronUp size='1.2rem' className='text-gray-600 hover:text-black'/> : 
+                        
+                        {openInvoice ===true  ? <BiSolidChevronUp size='1.2rem' className='text-gray-600 hover:text-black'/> : 
                            <BiSolidChevronDown size='1.2rem' className='text-gray-600 hover:text-black'/>
                         }
                        
-
-                    
+                                           
                       </Link>
-                      {openCashoffice && (
-                      <li className=' ml-3 bg-opacity-1 '>
-                        <ul className="  pl-2 pt-1 mx-1  h-auto w-auto">
+                      {activeSidebar === 'cash_office' && isDropdownActive && (
+                      <li className=' ml-2 bg-opacity-1 '>
+                        <ul className="  pl-1 pt-1 mx-1  h-auto w-auto">
                           
-                            <li  className="p-1   hover:bg-white text-gray-600 hover:text-black rounded-md ">
+                            <li  className= "p-1   hover:bg-white text-gray-600 hover:text-black rounded-md ">
                                <NavLink to='capital' className='flex '> <TbPoint size='1.2rem' className='flex pt-1 '/>Capital
                                </NavLink>
                             </li>
                             <li  className=" p-1   hover:bg-white text-gray-600 hover:text-black rounded-md ">
                             
-                               <Link to='audited-cashadvance' className='flex '> <TbPoint size='1.2rem' className='flex pt-1 '/> Overhead 
+                               <Link to='over-head' className='flex '> <TbPoint size='1.2rem' className='flex pt-1 '/> Overhead 
                                </Link>
                             </li>
                             
@@ -387,16 +411,28 @@ const logoutSubmit = () => {
                       </li>
                      )}
                     </li>
+                    </div>
                      {/* Cash Office Operation End */}
 
                       {/* Invoicing */}
+                    <div  
+                   
+                        onClick={() => handleSidebarClick('invoicing')}
+                        >
+                         
+                  
                     <li>
                       <Link
                         to="#"
-                        onClick={invoiceDropdown}
-                        className="text-base no-underline text-gray-600 hover:text-black  font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
+                       
+                        className={`${ activeSidebar === 'invoicing' ? 'text-base no-underline text-gray-600 hover:text-black  font-normal rounded-lg bg-gray-200 flex items-center p-2 group'
+                        : 
+                        'text-base no-underline text-gray-600 hover:text-black  font-normal rounded-lg hover:bg-gray-200 flex items-center p-2 group' }`}
                       >
-                        <LiaFileInvoiceSolid className="w-6 h-6 text-gray-600 flex-shrink-0 group-hover:text-black transition duration-75"/>
+                         {activeSidebar === 'invoicing' ?<LiaFileInvoiceSolid className="w-6 h-6 text-gray-600 flex-shrink-0 group-gray:text-yellow-600 transition duration-75"/>:
+                          <LiaFileInvoiceSolid className="w-6 h-6 text-gray-600 flex-shrink-0 group-hover:text-gray-600  transition duration-75"/>
+                        }
+                        
                       
 
                         <span className="ml-3 flex-1 whitespace-nowrap hover:text-black">
@@ -409,9 +445,9 @@ const logoutSubmit = () => {
 
                     
                       </Link>
-                      {openInvoice && (
-                      <li className=' ml-3 bg-opacity-1 '>
-                        <ul className="  pl-2 pt-1 mx-1  h-auto w-auto">
+                      {activeSidebar === 'invoicing' && isDropdownActive && (
+                      <li className=' ml-2 bg-opacity-1 '>
+                        <ul className="  pl-1 pt-1 mx-1  h-auto w-auto">
                           
                             <li  className="p-1   hover:bg-white text-gray-600 hover:text-black rounded-md ">
                                <NavLink to='cashadvance-list' className='flex '> <TbPoint size='1.2rem' className='flex pt-1 '/>  Payment Voucher
@@ -433,12 +469,13 @@ const logoutSubmit = () => {
                       </li>
                      )}
                     </li>
+                    </div>
                      {/* Invoicing End */}
 
                     <li>
                       <Link
                         to="#"
-                        onClick={toggleDropdown}
+                        onClick={() => handleSidebarClick('advance')}
                         className="text-base no-underlinetext-gray-600 hover:text-black  font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                       >
                         <svg
@@ -466,9 +503,9 @@ const logoutSubmit = () => {
 
                     
                       </Link>
-                      {isOpen && (
-                      <li className=' ml-3 bg-opacity-1 '>
-                        <ul className="  pl-2 pt-1 mx-1  h-auto w-auto">
+                      {activeSidebar === 'advance' && isDropdownActive && (
+                      <li className=' ml-2 bg-opacity-1 '>
+                        <ul className="  pl-1 pt-1 mx-1  h-auto w-auto">
                           
                             <li  className="p-1   hover:bg-white text-gray-600 hover:text-black rounded-md ">
                                <NavLink to='cashadvance-list' className='flex '> <TbPoint size='1.2rem' className='flex pt-1 '/>Cash Advance List
@@ -493,7 +530,7 @@ const logoutSubmit = () => {
                     <li>
                       <Link
                         to="#"
-                        onClick={retirementDropdown}
+                        onClick={() => handleSidebarClick('retirement')}
                         className="text-base no-underline text-gray-600 hover:text-black  font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                       >
                          <svg
@@ -520,22 +557,22 @@ const logoutSubmit = () => {
 
                     
                       </Link>
-                      {retirementOpen && (
-                      <li className=' ml-3 bg-opacity-1 '>
-                        <ul className="  pl-2 pt-1 mx-1  h-auto w-auto">
+                      {activeSidebar === 'retirement' && isDropdownActive &&  (
+                      <li className=' ml-2 bg-opacity-1 '>
+                        <ul className="  pl-1 pt-1 mx-1  h-auto w-auto">
                           
-                            <li  className="p-1   hover:bg-white text-gray-600 hover:text-black rounded-md ">
-                               <NavLink to='all-retirement' className='flex '> <TbPoint size='1.2rem' className='flex pt-1 '/>Retirement Voucher List
+                            <li  className="p-1  hover:bg-white text-gray-600 hover:text-black rounded-md ">
+                               <NavLink to='all-retirement' className='flex '> <TbPoint size='1.5rem' className='flex pt-1  '/>Retirement Voucher List
                                </NavLink>
                             </li>
                             <li  className=" p-1   hover:bg-white text-gray-600 hover:text-black rounded-md ">
                             
-                               <Link to='audited-cashadvance' className='flex '> <TbPoint size='1.2rem' className='flex pt-1 '/>Audited Retirement
+                               <Link to='audited-cashadvance' className='flex '> <TbPoint size='1.5rem' className='flex pt-1 '/>Audited Retirement
                                </Link>
                             </li>
                             
                             <li className="p-1   hover:bg-white text-gray-600 hover:text-black rounded-md "> 
-                            <Link to='paid-cashadvance' className='flex '> <TbPoint size='1.2rem' className='flex pt-1 '/>   Approved Retirement
+                            <Link to='paid-cashadvance' className='flex '> <TbPoint size='1.5rem' className='flex pt-1 '/>   Approved Retirement
                                </Link> 
                             </li>
                         

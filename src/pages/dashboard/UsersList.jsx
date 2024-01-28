@@ -108,7 +108,7 @@ const UsersList = () => {
       <div className="flex mx-3 flex-col">
         <div class="md:flex items-center justify-between mx-4 mt-2">
           <div className="flex md:justify-start md:items-start text-center">
-            <h2 class="text-gray-600 mt-2 my-4 md:text-xl text-sm font-semibold text-center">
+            <h2 class="text-gray-600 mt-2 my-4 md:text-xl text-[12px] font-semibold text-center">
               Latest Enrolled Staff
             </h2>
           </div>
@@ -145,45 +145,45 @@ const UsersList = () => {
                   <tr>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-[11px] font-bold text-gray-500 uppercase tracking-wider"
                     >
                       S/N
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-[11px] font-bold text-gray-500 uppercase tracking-wider"
                     >
                       Photo
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-[11px] font-bold text-gray-500 uppercase tracking-wider"
                     >
                      Staff No
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-[11px] font-bold text-gray-500 uppercase tracking-wider"
                     >
                        Name/Email
                     </th>
                   
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-[11px] font-bold text-gray-500 uppercase tracking-wider"
                     >
                       Verified
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-[11px] font-bold text-gray-500 uppercase tracking-wider"
                     >
                       Organization/Designation
                     </th>
 
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-[11px] font-bold text-gray-500 uppercase tracking-wider"
                     >
                       Phone
                     </th>
@@ -194,7 +194,7 @@ const UsersList = () => {
               {viewUsers.map((item,i) => (
                   <tr>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">{i + 1}</div>
+                      <div className="text-[12px] font-medium text-gray-900">{i + 1}</div>
                     </td>
                      {/* <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm font-medium text-gray-900">{item.id}</div>
@@ -206,7 +206,7 @@ const UsersList = () => {
                             
                               src={`${item.profile.profile}`}
                               alt="Image"
-                              className="h-12 w-12 rounded-full shadow "
+                              className="h-9 w-9 rounded-full shadow "
                             />
                           )}
                                                   
@@ -214,15 +214,15 @@ const UsersList = () => {
                       <div className="text-sm font-medium text-gray-900">{item.station}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">{item.staff_number}</div>
+                      <div className="text-[12px] font-medium text-gray-900">{item.staff_number}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="items-center">
-                          <div className="text-sm font-medium text-gray-900">
+                          <div className="text-[12px] font-medium text-gray-900">
                           {item.first_name} {item.last_name}
                           </div>
-                          <div className="text-sm text-gray-500">{item.email}</div>
+                          <div className="text-[12px] text-gray-500">{item.email}</div>
                         </div>
                       </div>
                     </td>
@@ -231,23 +231,23 @@ const UsersList = () => {
                     
                     {item.profile.verified === true ?
                       <span
-                        className="px-2 inline-flex text-xs leading-5
+                        className="px-2 inline-flex text-[11px] leading-5
                             font-semibold rounded-sm bg-green-200 text-gray-800"
                       >  
                           Verified                             
                       </span> :   <span
-                        className="px-2 inline-flex text-xs leading-5
+                        className="px-2 inline-flex text-[11px] leading-5
                             font-semibold rounded-sm bg-red-100 text-red-800"
                       >      Not Verified                         
                       </span>}
                     </td>
                     
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{item.profile.department}</div>
-                      <div className="text-sm text-gray-500">{item.profile.station}</div>
+                      <div className="text-[12px] text-gray-900">{item.profile.department}</div>
+                      <div className="text-[12px] text-gray-500">{item.profile.station}</div>
                     </td>
 
-                    <td className="pr-6 py-4 whitespace-nowrap  text-sm font-medium">
+                    <td className="pr-6 py-4 whitespace-nowrap  text-[12px] font-medium">
                       <Link to="#" className="text-indigo-600  hover:text-indigo-900">
                       {item.profile.mobile}
                       </Link>
@@ -257,7 +257,7 @@ const UsersList = () => {
               ))}
                 </tbody>
               </table>
-              <div className="flex text-sm font-medium justify-center items-center space-x-2 m-2">
+              <div className="flex text-[12px] font-medium justify-center items-center space-x-2 m-2">
                         {/* <button  className=" cursor-pointer disabled:bg-red-400 rounded-sm px-2 text-gray-600">
                           Previous
                         </button>
@@ -276,7 +276,7 @@ const UsersList = () => {
                                 </button>
                           }
                 </div>
-                <div className="flex text-xs justify-center items-center  m-2">                       
+                <div className="flex text-[11px] justify-center items-center  m-2">                       
                       
                                 <span>
                                   Total Records {count}

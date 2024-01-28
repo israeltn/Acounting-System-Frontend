@@ -4,7 +4,7 @@ import { useState, useEffect} from "react";
 import {baseURL } from "../../baseurl"
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 import { FiEye } from 'react-icons/fi'; 
-import { AiOutlineDelete } from 'react-icons/ai';
+// import { AiOutlineDelete } from 'react-icons/ai';
 import { TbCurrencyNaira } from 'react-icons/tb'; 
 const PaidCashAdvance = () => {
 
