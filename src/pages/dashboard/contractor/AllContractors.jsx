@@ -1,13 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Link } from "react-router-dom";
 import { useState, useEffect} from "react";
-import {baseURL } from "../../baseurl"
+import {baseURL } from "../../../baseurl"
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 import { FiEye } from 'react-icons/fi'; 
 import { AiOutlineDelete } from 'react-icons/ai';
 import { TbCurrencyNaira } from 'react-icons/tb'; 
-// import { BiMessageSquareAdd } from 'react-icons/bi';
-const AllRetirementVoucher = () => {
+import { BiMessageSquareAdd } from 'react-icons/bi';
+
+const AllContractors = () => {
 
     const [loading, setLoading] = useState(true);
     // const url = baseURL +`/approved-cashadvance/`;
@@ -21,7 +22,7 @@ const AllRetirementVoucher = () => {
   
 
     const handleSearch = () => {  
-      const url = baseURL +`/approved-cashadvance/?search=${searchQuery}`;  
+      const url = baseURL +`/capital/all/?search=${searchQuery}`;  
         fetch(url,{
           headers: {
             "Content-Type":"application/json",
@@ -36,7 +37,10 @@ const AllRetirementVoucher = () => {
     
         .then((data)=>{
          
-          setviewCashAdvance(data.results); 
+          setviewCashAdvance(data.results);
+          
+      
+          
           setpreviousUrl(data.previous)
           setnextUrl(data.next)
           setcount(data.count)   
@@ -74,85 +78,57 @@ const AllRetirementVoucher = () => {
         }
       };
 
-
-      const ApprovalButton = ({ isApproved }) => {
-        const getButtonStyle = () => {
-          if (isApproved === 'processing') {
-            return 'bg-red-200';
-          } else if (isApproved === 'approved') {
-            return 'bg-yellow-300';
-          } else if (isApproved === 'reviewed') {
-            return 'bg-green-400';
-          }else if (isApproved === 'audited') {
-            return 'bg-green-400';
-          } else if (isApproved === 'paid') {
-            return 'bg-green-500';
-          } 
-          else {
-            return '';
-          }
-        };
-        const getButtonText = () => {
-          if (isApproved === 'processing') {
-            return 'Wait list';
-          } else if (isApproved === 'approved') {
-            return 'Approved';
-            
-          }  else if (isApproved === 'reviewed') {
-            return 'Reviewed';
-            
-          }  else if (isApproved === 'audited') {
-            return 'Audited';
-          } else if (isApproved === 'paid') {
-            return 'Paid';
-            
-          } 
-          else {
-            return '';
-          }
-        };
-              
-        return (     
-          <> <span
-            className={`px-2 inline-flex text-xs leading-5
-                font-semibold rounded-sm  text-gray-800 ${getButtonStyle()}`}>
-                    {getButtonText()}
-              </span>
-                  
-        </>
-        )
+      const truncateDescription = (description, maxLength) => {
+        if (description.length <= maxLength) {
+          return description;
+        } else {
+          const truncated = description.split(' ').slice(0, maxLength).join(' ');
+          return `${truncated} ...`;
+        }
       };
+      
+      
       
 
   return (
     <div className="grid grid-cols-1 mx-12 mt-4 ">
     <div className="my-6">
     <div className="flex mx-3 flex-col">
-    <div className="flex md:justify-start md:items-start text-center">
-                       
-                  
-      </div>
-                <div class="md:flex items-center justify-between mx-4 mt-2">
-
-                <div className="mb-4 justify-start items-start ">
-                <h2 class="text-gray-600 mx-2 mt-2  md:text-xl text-xs font-semibold text-center">
-                          Latest Cash Advance
+            <div className="flex md:justify-start md:items-start text-center">
+                        <h2 class="text-gray-600 mx-4 mt-2 my-4 md:text-xl text-sm font-semibold text-center">
+                          Latest Contractors
                         </h2>
-                
-                  </div>
-                 
-                  <div className="mb-4 justify-center items-center ">
-                    <input
-                      type="text"
-                      placeholder="Search by date:2023-08-05, title, amount , bank..."
-                      className="border-gray-400 w-[20rem]  hover:border-green-600 border-2 h-7 p-2 text-xs rounded-lg"
-                      value={searchQuery}
-                      onChange={event => setSearchQuery(event.target.value)}
-                    />
-                
-                  </div>
                   
-                </div>
+            </div>
+             
+            <div class="md:flex items-center justify-between mx-4 mt-2">
+
+                        <div className="flex md:justify-start md:items-end space-x-2">
+                            <Link  to="/dashboard/add-capital"
+                            className="flex mb-2 text-black h-7   text-center w-[7rem] justify-center p-1 items-center border-2 border-gray-400  hover:border-green-600 rounded-md">
+                            <div className="flex justify-center items-center" >
+                                    
+                                    <span className="inline-block text-black text-xs  mr-1"> Add New  </span>                            
+                                    <BiMessageSquareAdd className="flex  w-[20px] text-red-700  text-xs text-center" />
+                                </div>
+                            </Link>
+                            
+                        </div>
+
+                        <div className="mb-4 justify-center items-center ">
+                        <input
+                            type="text"
+                            placeholder="Search by title, amount, bank..."
+                            className="border-gray-400  hover:border-green-600 border-2 h-7 p-2 text-xs rounded-lg"
+                            value={searchQuery}
+                            onChange={event => setSearchQuery(event.target.value)}
+                        />
+
+                        </div>
+
+            </div>
+                  
+              
                 {loading ? (
                     <div className="text-center max-w-screen-xl max-h-screen-[72] mx-auto justify-center items-center ">
                     <div role="status" className="mt-[20rem]">
@@ -182,54 +158,54 @@ const AllRetirementVoucher = () => {
             
                     <table className="min-w-full divide-y divide-gray-200">
                       <thead className="bg-gray-400">
-                        <tr>
+                        <tr className="">
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
+                            className="px-3 py-2 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
                             S/N
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
-                            Staff Name
+                            Company  Name
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
-                            IPPIS No
+                            Code
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
-                            Title
+                            Amount
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
-                            Department
+                            Type
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
-                         Amount 
+                         Narative
                           </th>
                         
                         
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
-                            Status
+                            Station
                           </th>
                           <th
                             scope="col"
-                            className="px-1 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
+                            className="px-1 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
                             Action
                           </th>
@@ -241,34 +217,39 @@ const AllRetirementVoucher = () => {
                       <tbody className="bg-white divide-y divide-gray-200">
                         {/* {display_Participantsdata} */}
                     {viewCashAdvance.map((item,i) => (
+                       
                         <tr>
-                          <td className="px-6 py-4 whitespace-nowrap">
+                          <td className="px-3 py-2 whitespace-nowrap">
                             <div className="text-xs font-medium text-gray-900">{i + 1}</div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap  ">
-                            <p className="text-xs font-medium text-gray-900">{item.user.first_name} {item.user.last_name}</p>
+                            <p className="text-xs font-medium text-gray-900">{item.title} </p>
                             
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap  ">
-                            <p className="text-xs font-medium text-gray-900">{item.user.ipps_number}</p>
+                            <p className="text-xs font-medium text-gray-900">{item.code}</p>
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap  ">
-                            <p className="text-xs font-medium text-gray-900">{item.title}</p>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap  ">
-                            <p className="text-xs font-medium text-gray-900">{item.user.profile.department}</p>
-                          </td>
-                            
-                          <td className="px-6 py-4 whitespace-nowrap justify-center text-center">                              
-                            <div className="flex text-xs font-medium text-center text-gray-900"> <TbCurrencyNaira className=" text-[16px] text-center"/>{item.formatted_price}</div>                
+                          <td className="px-6 py-4 whitespace-nowrap">                              
+                            <div className="flex text-xs font-medium text-gray-900"> <TbCurrencyNaira className="text-xl text-center"/>{item.amount}</div>                
                                                       
                           </td>
+                          <td className="px-6 py-4 whitespace-nowrap  ">
+                            <p className="text-xs uppercase font-medium text-gray-900">{item.type} Capital</p>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <p className="text-xs font-medium text-gray-900">
+                              {truncateDescription(item.discription, 4)}
+                            </p>
+                          </td>
+
+                            
+                          
 
                          
                         
 
                           <td className="px-6 py-4 whitespace-nowrap rounded-md">
-                          <ApprovalButton isApproved={item.is_approved} />                           
+                          <p className="text-xs font-medium uppercase text-gray-900">{item.zonal_station}</p>                                                
                           
                           </td>
                          
@@ -327,4 +308,4 @@ const AllRetirementVoucher = () => {
   )
 
 };
-export default AllRetirementVoucher;
+export default AllContractors;

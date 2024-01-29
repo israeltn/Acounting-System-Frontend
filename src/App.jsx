@@ -35,6 +35,15 @@ import CashAdvanceEdit from "./pages/dashboard/EditCashAdvance"
 import AllRetirementVoucher from "./pages/dashboard/AllRetirementVoucher"
 import AuditedCashAdvance from "./pages/dashboard/AuditedCashAdvance"
 import PaidCashAdvance from "./pages/dashboard/PaidCashAdvance"
+import CapitalList from "./pages/dashboard/cash-office/capital/AllCapital"
+import AddCapital from "./pages/dashboard/cash-office/capital/AddCapital"
+
+import OverheadList from "./pages/dashboard/cash-office/overhead/AllOverhead"
+import AddOverhead from "./pages/dashboard/cash-office/overhead/AddOverhead"
+
+
+import CantractorList from "./pages/dashboard/contractor/AllContractors"
+import AddCantractor from "./pages/dashboard/contractor/AddContractor"
 
 
 
@@ -69,6 +78,18 @@ function App() {
                         <Route path = "all-retirement"element = { < AllRetirementVoucher /> }/> 
                         <Route path = "audited-cashadvance"element = { < AuditedCashAdvance /> }/> 
                         <Route path = "paid-cashadvance"element = { < PaidCashAdvance /> }/> 
+
+                          {/* Cash Office */}
+                        
+                        <Route path = "capital"element = { < CapitalList /> }/> 
+                        <Route path = "add-capital"element = { < AddCapital /> }/> 
+
+                        <Route path = "over-head"element = { < OverheadList /> }/>
+                        <Route path = "add-overhead"element = { < AddOverhead /> }/> 
+
+                        <Route path = "cantractors"element = { < CantractorList /> }/>
+                        <Route path = "add-cantractor"element = { < AddCantractor /> }/> 
+                        
                         
 
         </Route>
@@ -80,14 +101,19 @@ function App() {
                         <Route index element = { < StaffDashboard />} /> 
                             </StaffElement > }>
                         <Route index element = {< StaffDashboard />}/>   
-                        <Route path = "updateprofile"element = { < UpdateUserProfile /> }/>                 
+
+                        <Route path = "updateprofile"element = { < UpdateUserProfile /> }/> 
+
+                        {/* CashAdvance */}
                         <Route path = "cashadvance"element = { < CashAdvanceList /> }/> 
                         <Route path = "edit-cashadvance/:id"element = { < EditCashAdvance /> }/> 
                         <Route path = "chashadvanceform"element = { < ChashadvanceForm /> }/> 
+
+                         {/* Retirement */}
                         <Route path = "retirementform"element = { < RetirementForm /> }/> 
                         <Route path = "retirementvoucher"element = { < StaffRetirement /> }/> 
-                        
 
+                        
         </Route>
             { /* Staff Routes  */ } 
 

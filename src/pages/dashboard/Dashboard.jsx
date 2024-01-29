@@ -67,7 +67,7 @@ const Dashboard = () => {
   return (
     <div>
       <main>
-        <div className="py-6 px-4 bg-gray-100">
+        <div className="py-6 px-4 bg-blue-50">
         <div className="mt-4 w-full  grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                 {/* Total section */}
                 <div className="shadow bg-gradient-to-r from-pink-400 to-pink-800  border-b-1 rounded-lg p-4 sm:p-6 xl:p-8 ">
@@ -199,7 +199,7 @@ const Dashboard = () => {
                 <div className="shadow md:w-1/2 w-full h-auto bg-white border-b-4  rounded-lg px-4 sm:p-6 xl:p-8 ">
                       <div className="justify-center items-center">                        
                           <div className="flex justify-center items-center text-center mb-2">
-                            <h1 className="font-bold">Cash Advance Chart</h1>
+                            <h1 className="font-bold">Income/Expenses</h1>
                           </div>
                         <div >
                         <div >
@@ -351,8 +351,8 @@ const Dashboard = () => {
                             </td>
                             
                             <td className="px-6 py-4 whitespace-nowrap">
-                              <div className="text-sm text-gray-900">{item.profile.department}</div>
-                              <div className="text-sm text-gray-500">{item.profile.station}</div>
+                              <div className="text-sm text-gray-900">{item.profile.department} {item.profile.station}</div>
+                              {/* <div className="text-sm text-gray-500">{item.profile.station}</div> */}
                             </td>
 
                             <td className="pr-6 py-4 whitespace-nowrap  text-sm font-medium">

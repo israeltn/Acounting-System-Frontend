@@ -139,7 +139,7 @@ const CashAdvanceList = () => {
                           Latest Cash Advance
                         </h2>
                   
-      </div>
+    </div>
                 <div class="md:flex items-center justify-between mx-4 mt-2">
 
                   <div className="flex md:justify-start md:items-end space-x-2">

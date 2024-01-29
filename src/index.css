@@ -2,15 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {  
+    body {
+  
+      font-family: 'Roboto', sans-serif;
+      
+  }
+}
 
 @media print {
     /* Set A4 size dimensions */
+
+    body {
+      /* font-family: system-ui, sans-serif; */
+      font-family: 'Roboto', sans-serif;
+      font-size: 55.25%;
+  }
     @page {
       size: A4;
       margin: 0;
+      font-size: 40px;
       width: 100%;
     }
-
+ 
     button {
         display: none;
       }
