@@ -199,7 +199,7 @@ const Dashboard = () => {
                 <div className="shadow md:w-1/2 w-full h-auto bg-white border-b-4  rounded-lg px-4 sm:p-6 xl:p-8 ">
                       <div className="justify-center items-center">                        
                           <div className="flex justify-center items-center text-center mb-2">
-                            <h1 className="font-bold">Cash Advance Chart</h1>
+                            <h1 className="font-bold">Income/Expenses</h1>
                           </div>
                         <div >
                         <div >

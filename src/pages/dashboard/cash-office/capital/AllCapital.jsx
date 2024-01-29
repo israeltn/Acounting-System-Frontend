@@ -77,6 +77,16 @@ const AllCapital = () => {
           console.error(error);
         }
       };
+
+      const truncateDescription = (description, maxLength) => {
+        if (description.length <= maxLength) {
+          return description;
+        } else {
+          const truncated = description.split(' ').slice(0, maxLength).join(' ');
+          return `${truncated} ...`;
+        }
+      };
+      
       
       
 
@@ -151,51 +161,51 @@ const AllCapital = () => {
                         <tr className="">
                           <th
                             scope="col"
-                            className="px-3 py-2 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
+                            className="px-3 py-2 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
                             S/N
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
                             Title
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
                             Code
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
                             Amount
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
                             Type
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
-                         Discription
+                         Narative
                           </th>
                         
                         
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
                             Station
                           </th>
                           <th
                             scope="col"
-                            className="px-1 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
+                            className="px-1 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
                             Action
                           </th>
@@ -226,9 +236,12 @@ const AllCapital = () => {
                           <td className="px-6 py-4 whitespace-nowrap  ">
                             <p className="text-xs uppercase font-medium text-gray-900">{item.type} Capital</p>
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap  ">
-                            <p className="text-xs font-medium text-gray-900">{item.discription}</p>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <p className="text-xs font-medium text-gray-900">
+                              {truncateDescription(item.discription, 4)}
+                            </p>
                           </td>
+
                             
                           
 

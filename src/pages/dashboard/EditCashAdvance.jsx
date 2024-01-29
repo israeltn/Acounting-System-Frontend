@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-// import RNALogo from '../../assets/images/logo1.png';
+import RNALogo from '../../assets/images/logo1.png';
 import { NavLink, useParams } from 'react-router-dom';
 import {baseURL } from "../../baseurl"
 import { useState, useEffect} from "react";
@@ -137,9 +137,9 @@ if(loading)
                
                 <div  className="w-full  justify-center items-center max-w-screen-xl mx-auto  border-11 ">
                 <div className=" py-3  mx-auto max-w-screen-xl text-center  px-2 justify-center items-center">
-                        {/* <div className='flex w-full justify-center items-center'>
-                        <img src={RNALogo} className=" md:w-[80px] w-[50px] justify-center items-center flex" alt="Windster Logo" />
-                    </div> */}
+                        <div className='flex w-full justify-center items-center'>
+                        <img src={RNALogo} className=" md:w-[47px] w-[47px] justify-center items-center flex pb-2" alt="Windster Logo" />
+                    </div>
                     <h2 className=" md:text-xs  uppercase dark:bg-gray-900 font-bold ">Federel Radio Corporation of Nigeria</h2>
                     <h2 className=" uppercase dark:bg-gray-900 font-bold md:text-xs">Cash Advance </h2>
                 </div>
@@ -155,8 +155,8 @@ if(loading)
                     <div className="flex flex-wrap mx-2  border-gray-200 ">
                         <div className="w-full md:w-1/4 px-3  md:mb-0  ">
                         <label className="flex  " >
-                                <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold '> Staff No:</span>  
-                             <span className='text-center text-xs pl-2'> {viewUser.staff_number}</span>
+                                <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold '> IPPIS No:</span>  
+                             <span className='text-center text-xs pl-2'> {viewUser.ipps_number}</span>
                           
                         </label>                        
                        
@@ -230,7 +230,7 @@ if(loading)
                              <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold '> Amount:</span>
                             </label>
                             <div className="flex appearance-none text-xs pl-2  w-full  text-gray-700 border   py-1 px-4 mb-1 " >
-                            <TbCurrencyNaira className="text-md text-center"/> {viewCashAdvance.amount} 
+                            <TbCurrencyNaira className="text-[17px] text-center"/> {viewCashAdvance.amount} 
                             </div>
                             
                         </div>
@@ -252,7 +252,7 @@ if(loading)
                     <div className="flex flex-wrap mx-2 mb-2">
                         <div className="w-full px-3">
                         <label className="" for="grid-password">
-                              <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold '>Description of Cash Advance:</span>
+                              <span className='block uppercase tracking-wide text-gray-700 text-xs font-bold '>Narative of Cash Advance:</span>
                         </label>
                         <div className="appearance-none text-xs pl-2 block w-full h-[5rem]   text-gray-700 border   py-1 px-4 mb-3 " >
                         {viewCashAdvance.discription}
@@ -343,29 +343,28 @@ if(loading)
       <div>
        
       </div>
-                <div className="w-full item-center justify-center flex space-x-2 mb-6">
-                    <NavLink  to="/dashboard/cashadvancelist"
-                    className=" mb-2  text-center w-1/7 justify-center p-1  items-center bg-gradient-to-r from-green-600 to-green-800  text-white border-gray-800 rounded-md">
-                       <button className='' >
+                <div className="w-full item-center justify-center flex space-x-2 mb-4">
+                    <NavLink  to="/dashboard/cashadvancelist"  >
+                       <button className='mb-1  text-center w-1/9 justify-center px-3   items-center bg-gradient-to-r from-green-600 to-green-800  text-black border-gray-800 rounded-md' >
                             
-                            <span className="inline-block text-xs mr-2"> Back </span>
+                            <span className="inline-block text-xs font-bold"> Back </span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 inline-block">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                            
                         </button>
                     </NavLink>
-                    <button  type="submit" disabled={isSubmitting} className=" mb-2 text-xs  text-center w-1/7 justify-center py-2 px-2 items-center bg-gradient-to-r from-green-600 to-green-800  text-white border-gray-800 rounded-md">
-                        <span className="inline-block mr-2"> {isSubmitting ? "Submitting Data..." : "Submit"} </span>
+                    <button  type="submit" disabled={isSubmitting} className=" mb-1  text-center w-1/9 justify-center px-3   items-center bg-gradient-to-r from-green-600 to-green-800  text-black border-gray-800 rounded-md">
+                        <span className="inline-block text-xs font-bold"> {isSubmitting ? "Submitting Data..." : "Submit"} </span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 inline-block">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                     </button>
               </div>
                 </form>
-        <div className='flex w-full justify-center items-center my-4'>
+        <div className='flex w-full justify-center items-center my-4 pb-4 '>
             <button
-                    className="bg-blue-500 justify-center items-center text-center hover:bg-blue-700 text-black font-bold py-1 px-2 rounded"
+                    className="bg-blue-500 justify-center items-center text-center text-xs px-4 hover:bg-blue-700 text-black font-bold py-1 rounded"
                     onClick={handlePrint}
                 >Print</button>
         </div>

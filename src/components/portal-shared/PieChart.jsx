@@ -1,61 +1,64 @@
+import React, { useState, useEffect } from 'react';
+import { Pie } from 'react-chartjs-2';
+import {baseURL } from "../../baseurl"
 
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend,
-    ArcElement
-  } from 'chart.js';
-  import { Pie, } from "react-chartjs-2";
-  
-  
-  ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    ArcElement,
-    Title,
-    Tooltip,
-    Legend
-  );
+const PieChart = () => {
+  const url = baseURL +`/general-ledger/`; 
+  const [chartData, setChartData] = useState({
+    labels: ['Income', 'Expense'],
+    datasets: [
+      {
+        data: ['No data'], // Initial values, you can set these as per your requirement
+        backgroundColor: ['#FF6384', '#36A2EB'],
+        hoverBackgroundColor: ['#FF6384', '#36A2EB'],
+      },
+    ],
+  });
 
-  const PieChart = () => {
- 
-  const chartOptions = {
-    responsive: true, // Adjust chart size responsively
-    maintainAspectRatio: false, // Prevent chart from maintaining aspect ratio
-   
-  };
-  const data = {
-    labels: ['Aproved', 'Not Aproved', ],
-      datasets: [
-        {
-          data: [12, 19, ], // Example data values for each label
-          backgroundColor: [
-            '#FF6384',
-            '#36A2EB',
-            
-            // '#FFCE56',
-            // '#33CC33',
-            // '#8A2BE2',
-            // '#FFA500',
-          ], // Example colors for each segment
-          hoverBackgroundColor: [
-            '#FF6384',
-            '#36A2EB',
-            // '#FFCE56',
-            // '#33CC33',
-            // '#8A2BE2',
-            // '#FFA500',
-          ], // Example hover colors for each segment
-        },
-      ],
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const result = await response.json();
+
+        // Assuming your API response has properties income and expense
+        const { total_capital_amount, total_cashadvance_amount } = result;
+        
+        // Format the values with Naira sign
+        const formattedIncome = `₦${total_capital_amount.toLocaleString()}`;
+        const formattedExpense = `₦${total_cashadvance_amount.toLocaleString()}`;
+
+
+        // Update the state with the new data
+        setChartData({
+          labels: ['Income ='+ ' '+ formattedIncome, 'Expense =' +' '+ formattedExpense],
+          datasets: [
+            {
+              data: [total_capital_amount, total_cashadvance_amount ],
+              
+              backgroundColor: ['#FF6384', '#36A2EB'],
+              hoverBackgroundColor: ['#FF6384', '#36A2EB'],
+            },
+          ],
+        });
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     };
+
+    fetchData();
+  }, [url]); // Empty dependency array means this effect runs once after the initial render
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+  };
+
   return (
-    <div className='w-[20rem] h-[10rem] md:w-[15rem] md:h-[15rem]'><Pie  data={data} options={chartOptions} /></div>
-  )
+    <div className='w-[20rem] h-[10rem] md:w-[15rem] md:h-[15rem]'>
+      <Pie data={chartData} options={chartOptions} />
+    </div>
+  );
 };
+
 export default PieChart;

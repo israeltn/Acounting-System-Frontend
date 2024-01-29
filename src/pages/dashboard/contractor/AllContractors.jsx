@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Link } from "react-router-dom";
 import { useState, useEffect} from "react";
-import {baseURL } from "../../../../baseurl"
+import {baseURL } from "../../../baseurl"
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 import { FiEye } from 'react-icons/fi'; 
 import { AiOutlineDelete } from 'react-icons/ai';
 import { TbCurrencyNaira } from 'react-icons/tb'; 
 import { BiMessageSquareAdd } from 'react-icons/bi';
 
-const AllCapital = () => {
+const AllContractors = () => {
 
     const [loading, setLoading] = useState(true);
     // const url = baseURL +`/approved-cashadvance/`;
@@ -22,7 +22,7 @@ const AllCapital = () => {
   
 
     const handleSearch = () => {  
-      const url = baseURL +`/overhead/all/?search=${searchQuery}`;  
+      const url = baseURL +`/capital/all/?search=${searchQuery}`;  
         fetch(url,{
           headers: {
             "Content-Type":"application/json",
@@ -96,7 +96,7 @@ const AllCapital = () => {
     <div className="flex mx-3 flex-col">
             <div className="flex md:justify-start md:items-start text-center">
                         <h2 class="text-gray-600 mx-4 mt-2 my-4 md:text-xl text-sm font-semibold text-center">
-                          Latest Capital
+                          Latest Contractors
                         </h2>
                   
             </div>
@@ -104,7 +104,7 @@ const AllCapital = () => {
             <div class="md:flex items-center justify-between mx-4 mt-2">
 
                         <div className="flex md:justify-start md:items-end space-x-2">
-                            <Link  to="/dashboard/add-overhead"
+                            <Link  to="/dashboard/add-capital"
                             className="flex mb-2 text-black h-7   text-center w-[7rem] justify-center p-1 items-center border-2 border-gray-400  hover:border-green-600 rounded-md">
                             <div className="flex justify-center items-center" >
                                     
@@ -169,7 +169,7 @@ const AllCapital = () => {
                             scope="col"
                             className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
-                            Title
+                            Company  Name
                           </th>
                           <th
                             scope="col"
@@ -257,11 +257,11 @@ const AllCapital = () => {
                           <td className="flex pr-6 py-4 whitespace-nowrap  text-xs font-medium space-x-2">
                             <Link to={`/dashboard/edit-cashadvance/` +item.id} className="text-indigo-600  hover:text-indigo-900">
                              
-                               <FiEye size='1rem' className='text-green-400 hover:text-indigo-500  text-center justify-center'/>
+                               <FiEye size='1.5rem' className='text-green-400 hover:text-indigo-500  text-center justify-center'/>
                             </Link>
                             <Link to="#" className="text-indigo-600  hover:text-indigo-900">
                            
-                            < AiOutlineDelete size='1rem' className='text-red-500 hover:text-yellow-400 text-center justify-center'/>
+                            < AiOutlineDelete size='1.4rem' className='text-red-500 hover:text-yellow-400 text-center justify-center'/>
                             </Link>
                           </td>
                         </tr>
@@ -308,4 +308,4 @@ const AllCapital = () => {
   )
 
 };
-export default AllCapital;
+export default AllContractors;

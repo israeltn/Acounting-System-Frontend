@@ -159,7 +159,7 @@ const UsersList = () => {
                       scope="col"
                       className="px-6 py-3 text-left text-[11px] font-bold text-gray-500 uppercase tracking-wider"
                     >
-                     Staff No
+                     IPPIS No
                     </th>
                     <th
                       scope="col"
@@ -243,8 +243,14 @@ const UsersList = () => {
                     </td>
                     
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-[12px] text-gray-900">{item.profile.department}</div>
-                      <div className="text-[12px] text-gray-500">{item.profile.station}</div>
+                    {item.profile.department.length > 0 ? (
+                            <div className="text-[12px] text-gray-900">
+                              {item.profile.department} / {item.profile.degnisation}
+                            </div>
+                          ) : (
+                            <div className="text-[12px] text-red-500"></div>
+                      )}
+                      
                     </td>
 
                     <td className="pr-6 py-4 whitespace-nowrap  text-[12px] font-medium">

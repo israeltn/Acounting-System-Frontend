@@ -42,6 +42,9 @@ import OverheadList from "./pages/dashboard/cash-office/overhead/AllOverhead"
 import AddOverhead from "./pages/dashboard/cash-office/overhead/AddOverhead"
 
 
+import CantractorList from "./pages/dashboard/contractor/AllContractors"
+import AddCantractor from "./pages/dashboard/contractor/AddContractor"
+
 
 
 import { ToastContainer } from 'react-toastify';
@@ -83,6 +86,9 @@ function App() {
 
                         <Route path = "over-head"element = { < OverheadList /> }/>
                         <Route path = "add-overhead"element = { < AddOverhead /> }/> 
+
+                        <Route path = "cantractors"element = { < CantractorList /> }/>
+                        <Route path = "add-cantractor"element = { < AddCantractor /> }/> 
                         
                         
 

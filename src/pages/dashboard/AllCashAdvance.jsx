@@ -185,37 +185,37 @@ const AllCashAdvance = () => {
                         <tr>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
                           >
                             S/N
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
                           >
                             Staff Name
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
                           >
-                            Staff No
+                            IPPIS No
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
                           >
                             Title
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
                           >
                             Department
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
                           >
                          Amount 
                           </th>
@@ -223,13 +223,13 @@ const AllCashAdvance = () => {
                         
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
+                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
                           >
                             Status
                           </th>
                           <th
                             scope="col"
-                            className="px-1 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
+                            className="px-1 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
                           >
                             Action
                           </th>
@@ -250,7 +250,7 @@ const AllCashAdvance = () => {
                             
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap  ">
-                            <p className="text-xs font-medium text-gray-900">{item.user.staff_number}</p>
+                            <p className="text-xs font-medium text-gray-900">{item.user.ipps_number}</p>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap  ">
                             <p className="text-xs font-medium text-gray-900">{item.title}</p>
@@ -259,8 +259,8 @@ const AllCashAdvance = () => {
                             <p className="text-xs font-medium text-gray-900">{item.user.profile.department}</p>
                           </td>
                             
-                          <td className="px-6 py-4 whitespace-nowrap">                              
-                            <div className="flex text-xs font-medium text-gray-900"> <TbCurrencyNaira className="text-xl text-center"/>{item.formatted_price}</div>                
+                          <td className="px-6 py-4 whitespace-nowrap justify-center text-center">                              
+                            <div className="flex text-xs font-medium text-center text-gray-900"> <TbCurrencyNaira className=" text-[16px] text-center"/>{item.formatted_price}</div>                
                                                       
                           </td>
 
