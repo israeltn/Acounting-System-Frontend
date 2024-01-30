@@ -22,7 +22,7 @@ const AllContractors = () => {
   
 
     const handleSearch = () => {  
-      const url = baseURL +`/capital/all/?search=${searchQuery}`;  
+      const url = baseURL +`/contractors/?search=${searchQuery}`;  
         fetch(url,{
           headers: {
             "Content-Type":"application/json",
@@ -37,10 +37,7 @@ const AllContractors = () => {
     
         .then((data)=>{
          
-          setviewCashAdvance(data.results);
-          
-      
-          
+          setviewCashAdvance(data.results);   
           setpreviousUrl(data.previous)
           setnextUrl(data.next)
           setcount(data.count)   
@@ -103,12 +100,12 @@ const AllContractors = () => {
              
             <div class="md:flex items-center justify-between mx-4 mt-2">
 
-                        <div className="flex md:justify-start md:items-end space-x-2">
-                            <Link  to="/dashboard/add-capital"
-                            className="flex mb-2 text-black h-7   text-center w-[7rem] justify-center p-1 items-center border-2 border-gray-400  hover:border-green-600 rounded-md">
-                            <div className="flex justify-center items-center" >
+                        <div className="flex md:justify-start md:items-end space-x-2 w-auto">
+                            <Link  to="/dashboard/add-cantractor"
+                            className="flex mb-2 text-black h-7   text-center w-[10rem] justify-center p-1 items-center border-2 border-gray-400  hover:border-green-600 rounded-md">
+                            <div className="flex w-auto justify-center items-center" >
                                     
-                                    <span className="inline-block text-black text-xs  mr-1"> Add New  </span>                            
+                                    <span className=" text-black text-xs  mr-1 w-[px] flex"> Add Contractor  </span>                            
                                     <BiMessageSquareAdd className="flex  w-[20px] text-red-700  text-xs text-center" />
                                 </div>
                             </Link>
@@ -118,7 +115,7 @@ const AllContractors = () => {
                         <div className="mb-4 justify-center items-center ">
                         <input
                             type="text"
-                            placeholder="Search by title, amount, bank..."
+                            placeholder="Search by Tin, and Company..."
                             className="border-gray-400  hover:border-green-600 border-2 h-7 p-2 text-xs rounded-lg"
                             value={searchQuery}
                             onChange={event => setSearchQuery(event.target.value)}
@@ -169,31 +166,31 @@ const AllContractors = () => {
                             scope="col"
                             className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
-                            Company  Name
+                            Company
                           </th>
                           <th
                             scope="col"
                             className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
-                            Code
+                            Tin
                           </th>
                           <th
                             scope="col"
                             className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
-                            Amount
+                            Bank
                           </th>
                           <th
                             scope="col"
                             className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
-                            Type
+                            Account
                           </th>
                           <th
                             scope="col"
                             className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
-                         Narative
+                         Phone
                           </th>
                         
                         
@@ -201,7 +198,7 @@ const AllContractors = () => {
                             scope="col"
                             className="px-6 py-3 text-left text-[11px]  text-gray-700 uppercase tracking-wider"
                           >
-                            Station
+                            Address
                           </th>
                           <th
                             scope="col"
@@ -223,45 +220,40 @@ const AllContractors = () => {
                             <div className="text-xs font-medium text-gray-900">{i + 1}</div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap  ">
-                            <p className="text-xs font-medium text-gray-900">{item.title} </p>
+                            <p className="text-xs font-medium text-gray-900">{item.company_name} </p>
                             
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap  ">
-                            <p className="text-xs font-medium text-gray-900">{item.code}</p>
+                            <p className="text-xs font-medium text-gray-900">{item.tin_number}</p>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">                              
-                            <div className="flex text-xs font-medium text-gray-900"> <TbCurrencyNaira className="text-xl text-center"/>{item.amount}</div>                
+                            <div className="flex text-xs font-medium text-gray-900">{item.bank}</div>                
                                                       
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap  ">
-                            <p className="text-xs uppercase font-medium text-gray-900">{item.type} Capital</p>
+                            <p className="text-xs uppercase font-medium text-gray-900">{item.account_number}</p>
+                          </td>
+                                                    
+
+                          <td className="px-6 py-4 whitespace-nowrap rounded-md">
+                          <p className="text-xs font-medium uppercase text-gray-900">{item.phone}</p>                                                
+                          
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <p className="text-xs font-medium text-gray-900">
-                              {truncateDescription(item.discription, 4)}
+                              {truncateDescription(item.address, 7)}
                             </p>
-                          </td>
-
-                            
-                          
-
-                         
-                        
-
-                          <td className="px-6 py-4 whitespace-nowrap rounded-md">
-                          <p className="text-xs font-medium uppercase text-gray-900">{item.zonal_station}</p>                                                
-                          
                           </td>
                          
 
                           <td className="flex pr-6 py-4 whitespace-nowrap  text-xs font-medium space-x-2">
                             <Link to={`/dashboard/edit-cashadvance/` +item.id} className="text-indigo-600  hover:text-indigo-900">
                              
-                               <FiEye size='1.5rem' className='text-green-400 hover:text-indigo-500  text-center justify-center'/>
+                               <FiEye size='1rem' className='text-green-400 hover:text-indigo-500  text-center justify-center'/>
                             </Link>
                             <Link to="#" className="text-indigo-600  hover:text-indigo-900">
                            
-                            < AiOutlineDelete size='1.4rem' className='text-red-500 hover:text-yellow-400 text-center justify-center'/>
+                            < AiOutlineDelete size='1rem' className='text-red-500 hover:text-yellow-400 text-center justify-center'/>
                             </Link>
                           </td>
                         </tr>

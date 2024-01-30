@@ -1,16 +1,16 @@
 
 // import RNALogo from '../../assets/images/logo1.png';
 // import { NavLink } from 'react-router-dom';
-import { useState } from "react";
+import { useState, useEffect  } from "react";
 
-import {baseURL} from "../../../baseurl"
+import {baseURL} from "../../../../baseurl"
 import { useNavigate } from 'react-router-dom';
 
 import { toast } from "react-toastify";
 // import swal from 'sweetalert';
 
 
-const AddContractor = () => {
+const AddContractPayment = () => {
 
 
 const navigate  = useNavigate();
@@ -19,35 +19,58 @@ const token = localStorage.getItem('authAccess');
 
 const [loading, setLoading] = useState(false);
 const [isSubmitting, setIsSubmitting] = useState(false);
-// const [zonaStation, setIsZonal] = useState('');
-// const [typeType, setType] = useState('');
+const [payees, setPayees] = useState([]);
+const [searchQuery, setSearchQuery] = useState('');
 
     const [formValues, setFormValues] = useState({
-      company_name: '',
-      tin_number: '',
-      account_number: '',
-      phone: '',     
-      bank: '',
-      services_offered: '',
-      sort_code: '',  
-      address: '',   
+      payee:'',
+      sub_total: '',
+      vat_rate: '',
+      withholding_tax_rate: '',
+      stamp_duty_rate: '',     
+      description: '',
+      supporting_documents: null,
+        
       
       error_list: [],
     });
 
-    // const handleZonalChange = (event) => {
-    //   setIsZonal(event.target.value);
-    // };
-  
-    // const handletypeChange = (event) => {
-    //   setType(event.target.value);
-    // };
+    useEffect(() => {
+        // Fetch list of users when the component mounts
+        const fetchPayees = async () => {
+          try {
+            const url = baseURL + '/contractors'; // Replace with the actual endpoint to fetch users
+            const response = await fetch(url, {
+              method: 'GET',
+              headers: {
+                'Authorization': `Bearer ${token}`,
+              },
+            });
+            const data = await response.json();
+            if (response.status === 200) {
+                setPayees(data.results ); // Update the users state with the fetched data
+            } else {
+              console.error('Failed to fetch contractors:', response);
+            }
+          } catch (error) {
+            console.error('Error fetching contractors:', error);
+          }
+        };
+    
+        fetchPayees();
+      }, [token]);
+
+      const filteredPayees = payees.filter(payee =>
+        payee.company_name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormValues({ ...formValues, [name]: value });
       };
-    
+      const handleFileChange = (files) => {
+        setFormValues({ ...formValues, supporting_documents: files[0] });
+      };
      
       const handleSubmit = async (e) => {
         e.preventDefault();
@@ -58,7 +81,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
         }
     
         try {
-        const url = baseURL + '/contractors/';    
+        const url = baseURL + '/contract-payment-vouchers/';    
           const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -117,7 +140,7 @@ if(loading)
                 <img src={RNALogo} className=" w-[80px] justify-center items-center flex" alt="Windster Logo" />
             </div> */}
         <h2 className="text-md pb-1 pt-5  uppercase dark:bg-gray-900 font-bold md:text-2xl">Federel Radio Corporation of Nigeria</h2>
-            <h2 className="text-md mt-2 uppercase dark:bg-gray-900 font-bold md:text-xl">Contractor Form</h2>
+            <h2 className="text-md mt-2 uppercase dark:bg-gray-900 font-bold md:text-xl">Contract Payment Form</h2>
         </div>
               
                <div className="container justify-center items-center max-w-screen-xl mx-auto">
@@ -136,85 +159,102 @@ if(loading)
                     <div className="flex flex-wrap -mx-3  mb-8">
                          <div className="w-full md:w-1/2 px-3">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                            Company Name
+                            Contractor 
                             </label>
-                            <input type="text" name="company_name" onChange={handleInputChange} value={formValues.company_name} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"   />
+                            <div className="flex space-x-2">
+                           
+                            <select
+                                name="payee"
+                                onChange={handleInputChange}
+                                value={formValues.payee}
+                                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"
+                                >
+                                <option value="">Select Contractor</option>
+                                {filteredPayees.map((payee) => (
+                                    <option key={payee.id} value={payee.id}>
+                                    {payee.company_name} {/* Replace with the actual user property you want to display */}
+                                    </option>
+                                ))}
+                            </select>
+                            <input
+                                type="text"
+                                name="searchQuery"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                placeholder="Search Contractor"
+                                className="appearance-none block text-sm w-[50%] bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"
+                                />
+                            </div>
                             <span className="pb-2 mb-2 text-sm text-red-600">
-                            {formValues.error_list.company_name}
+                            {formValues.error_list.payee}
                             </span>
                         </div>                        
                     </div>
                  <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
                           <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                              Tin Number
+                              Amount
                           </label>    
 
-                            <input type="number" name="tin_number" onChange={handleInputChange} value={formValues.tin_number} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"   />
+                            <input type="text" name="sub_total" onChange={handleInputChange} value={formValues.tin_number} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"   />
                             <span className="pb-2 mb-2 text-sm text-red-600">
-                            {formValues.error_list.tin_number}
+                            {formValues.error_list.sub_total}
                             </span>
                   
                     </div>
-                    <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                             Account Number
+                            Vat Rate
                             </label>
-                            <input type="number" name="account_number" onChange={handleInputChange} value={formValues.account_number} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"   />
+                            <input type="text" name="vat_rate" onChange={handleInputChange} value={formValues.account_number} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"   />
                             <span className="pb-2 mb-2 text-sm text-red-600">
-                            {formValues.error_list.account_number}
+                            {formValues.error_list.vat_rate}
                             </span>                   
                     
                     </div>
+                    <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                        Withholding Tax Rate
+                            </label>
+                            <input type="text" name="withholding_tax_rate" onChange={handleInputChange} value={formValues.withholding_tax_rate} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"   />
+                            <span className="pb-2 mb-2 text-sm text-red-600"></span>
+                    
+                    </div>
+                    <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                        Stamp Duty Rate
+                        </label>
+                        <input type="number" name="stamp_duty_rate" onChange={handleInputChange} value={formValues.stamp_duty_rate} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"   />
+                         {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
+                        </div>
                         
                 </div>
                    
-                    <div className="flex flex-wrap -mx-3 mb-6">
-                       
-                        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                            Bank
+                    
+                   
+                    <div className="flex flex-wrap justify-center items-center -mx-3 mb-8">
+                         <div className="w-full md:w-[50%] px-3 mb-6 md:mb-0">
+                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                            Naration
                             </label>
-                            <input type="text" name="bank" onChange={handleInputChange} value={formValues.bank} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"   />
+                            <input type="text" name="description" onChange={handleInputChange} value={formValues.description} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"   />
                             <span className="pb-2 mb-2 text-sm text-red-600"></span>
-                        
-                        </div>
-                       
-                        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                        Sort Code
-                        </label>
-                        <input type="number" name="sort_code" onChange={handleInputChange} value={formValues.sort_code} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"   />
-                         {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
-                        </div>
-                    </div>
-                    <div className="flex flex-wrap -mx-3 mb-8">
-                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                           Phone
-                        </label>
-                        <input type="number" name="phone" onChange={handleInputChange} value={formValues.phone} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"   />
-                         {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
                         </div>
                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                            Services Offered
+                            Supporting Ducument
                             </label>
-                            <input type="text" name="services_offered" onChange={handleInputChange} value={formValues.services_offered} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"   />
+                            <input
+                                type="file"
+                                name="supporting_documents"
+                                onChange={(e) => handleFileChange(e.target.files)}
+                                className="appearance-none block w-[60%] bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"
+                            />
                             
                             <span className="pb-2 mb-2 text-sm text-red-600"></span>
                         </div>
                        
                         
-                    </div>
-                    <div className="flex flex-wrap -mx-3 mb-3">
-                        <div className="w-full px-3">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-                         Address
-                        </label>
-                        <textarea type="text" name="address" onChange={handleInputChange} value={formValues.address} className="appearance-none h-[15rem] block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password"   />
-                        <span className="pb-2 mb-2 text-sm text-red-600"></span>
-                        </div>
                     </div>
                    
                     {/* <div disabled={loading} className="max-w-screen-xl mb-2 mx-auto text-center w-44 justify-center py-2 px-2 items-center bg-red-800 text-white border-gray-800 rounded-md ">
@@ -240,4 +280,4 @@ if(loading)
   )
 
 };
-export default AddContractor;
+export default AddContractPayment;

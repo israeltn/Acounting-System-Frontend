@@ -178,7 +178,7 @@ const UsersList = () => {
                       scope="col"
                       className="px-6 py-3 text-left text-[11px] font-bold text-gray-500 uppercase tracking-wider"
                     >
-                      Organization/Designation
+                      Department/Designation
                     </th>
 
                     <th
@@ -214,7 +214,7 @@ const UsersList = () => {
                       <div className="text-sm font-medium text-gray-900">{item.station}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-[12px] font-medium text-gray-900">{item.staff_number}</div>
+                      <div className="text-[12px] font-medium text-gray-900">{item.ipps_number}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">

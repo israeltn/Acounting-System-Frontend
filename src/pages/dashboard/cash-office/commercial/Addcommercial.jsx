@@ -3,14 +3,14 @@
 // import { NavLink } from 'react-router-dom';
 import { useState } from "react";
 
-import {baseURL} from "../../../baseurl"
+import {baseURL} from "../../../../baseurl"
 import { useNavigate } from 'react-router-dom';
 
 import { toast } from "react-toastify";
 // import swal from 'sweetalert';
 
 
-const AddContractor = () => {
+const AddCommercial = () => {
 
 
 const navigate  = useNavigate();
@@ -23,15 +23,13 @@ const [isSubmitting, setIsSubmitting] = useState(false);
 // const [typeType, setType] = useState('');
 
     const [formValues, setFormValues] = useState({
-      company_name: '',
-      tin_number: '',
+      title: '',
+      amount: '',
       account_number: '',
-      phone: '',     
-      bank: '',
-      services_offered: '',
-      sort_code: '',  
-      address: '',   
-      
+      zonal_station: '',     
+      remark: '',
+      description: '',
+      code: '',     
       error_list: [],
     });
 
@@ -48,7 +46,10 @@ const [isSubmitting, setIsSubmitting] = useState(false);
         setFormValues({ ...formValues, [name]: value });
       };
     
-     
+      const handleFileChange = (files) => {
+        setFormValues({ ...formValues, supporting_documents: files[0] });
+      };
+
       const handleSubmit = async (e) => {
         e.preventDefault();
     
@@ -58,7 +59,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
         }
     
         try {
-        const url = baseURL + '/contractors/';    
+        const url = baseURL + '/capital/create/';    
           const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -70,21 +71,21 @@ const [isSubmitting, setIsSubmitting] = useState(false);
           const data = await response.json();
           if (response.status == 201) {
             // Handle success or redirect to another page
-            console.log('contractor created successfully');
+            console.log('Overhead created successfully');
             setLoading(false)
             setIsSubmitting(false)
-            toast.success('contractor created successfully');
-            navigate("/dashboard/cantractors");  
+            toast.success('Overhead created successfully');
+            navigate("/dashboard/over-head");  
           } else {
             // Handle error
-            console.error('Failed to create Cantractor:', response);
+            console.error('Failed to create Overhead:', response);
             setFormValues({
               ...formValues,
               error_list: data,           
             });
           }
         } catch (error) {
-          console.error('Error creating Cantractor:', error);
+          console.error('Error creating Capital:', error);
         }
       };
 
@@ -112,12 +113,12 @@ if(loading)
         
     <div className="container m-auto md:px-24  px-6 space-y-8 ">   
           
-        <div className=" max-w-screen-xl text-center mt-2  px-2 justify-center items-center">
+        <div className=" mx-auto max-w-screen-xl text-center  px-2 justify-center items-center">
                 {/* <div className='flex w-full justify-center items-center'>
                 <img src={RNALogo} className=" w-[80px] justify-center items-center flex" alt="Windster Logo" />
             </div> */}
-        <h2 className="text-md pb-1 pt-5  uppercase dark:bg-gray-900 font-bold md:text-2xl">Federel Radio Corporation of Nigeria</h2>
-            <h2 className="text-md mt-2 uppercase dark:bg-gray-900 font-bold md:text-xl">Contractor Form</h2>
+        <h2 className="text-2xl pb-1  uppercase dark:bg-gray-900 font-bold md:text-3xl">Federel Radio Corporation of Nigeria</h2>
+            <h2 className="text-2xl uppercase dark:bg-gray-900 font-bold md:text-xl">Commerial/IGR  Form</h2>
         </div>
               
                <div className="container justify-center items-center max-w-screen-xl mx-auto">
@@ -136,71 +137,77 @@ if(loading)
                     <div className="flex flex-wrap -mx-3  mb-8">
                          <div className="w-full md:w-1/2 px-3">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                            Company Name
+                            Commercial/IGR Title
                             </label>
-                            <input type="text" name="company_name" onChange={handleInputChange} value={formValues.company_name} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"   />
+                            <input type="text" name="title" onChange={handleInputChange} value={formValues.title} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"   />
                             <span className="pb-2 mb-2 text-sm text-red-600">
-                            {formValues.error_list.company_name}
+                            {formValues.error_list.title}
                             </span>
-                        </div>                        
-                    </div>
-                 <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                              Tin Number
-                          </label>    
+                        </div>  
+                        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                         Zonal Station
+                    </label>    
 
-                            <input type="number" name="tin_number" onChange={handleInputChange} value={formValues.tin_number} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"   />
-                            <span className="pb-2 mb-2 text-sm text-red-600">
-                            {formValues.error_list.tin_number}
-                            </span>
+                        <div className="relative  mt-2">
+                            <select name='zonal_station' value={formValues.zonal_station} onChange={handleInputChange}   className="block   appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" >
+                                    <option value="">Select</option>
+                                    <option value="abuja">Abuja Operations</option>
+                                    <option value="enugu">Enugu Operations</option>
+                                    <option value="headquaters">Headquaters</option>
+                                    <option value="ibadan">Ibadan Operations</option>
+                                    <option value="kaduna">Kaduna Operations</option>
+                                    <option value="lagos">Lagos Operations</option>
+                                    <option value="northc">North Central</option>
+                                    <option value="south">South South</option>
+                                    <option value="northe">North East</option>
+                            </select>
+                            {/* <span className="pb-2 mb-2 text-sm text-red-600">
+                            {viewCashAdvance.is_approved === 'account' ? 'Account Approved'  :  'Not Approved'}
+                            </span> */}
+                        </div>
                   
+                    </div>                      
                     </div>
-                    <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                             Account Number
-                            </label>
-                            <input type="number" name="account_number" onChange={handleInputChange} value={formValues.account_number} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"   />
-                            <span className="pb-2 mb-2 text-sm text-red-600">
-                            {formValues.error_list.account_number}
-                            </span>                   
-                    
-                    </div>
-                        
-                </div>
+              
                    
                     <div className="flex flex-wrap -mx-3 mb-6">
                        
                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                            Bank
+                            Amount
                             </label>
-                            <input type="text" name="bank" onChange={handleInputChange} value={formValues.bank} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"   />
+                            <input type="number" name="amount" onChange={handleInputChange} value={formValues.amount} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"   />
                             <span className="pb-2 mb-2 text-sm text-red-600"></span>
                         
                         </div>
                        
                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                        Sort Code
+                            Code
                         </label>
-                        <input type="number" name="sort_code" onChange={handleInputChange} value={formValues.sort_code} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"   />
+                        <input type="text" name="code" onChange={handleInputChange} value={formValues.code} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"   />
                          {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
                         </div>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-8">
                          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                           Phone
+                            Remark
                         </label>
-                        <input type="number" name="phone" onChange={handleInputChange} value={formValues.phone} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"   />
+                        <input type="text" name="remark" onChange={handleInputChange} value={formValues.remark} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"   />
                          {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
                         </div>
                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                            Services Offered
+                            Supporting Ducument
                             </label>
-                            <input type="text" name="services_offered" onChange={handleInputChange} value={formValues.services_offered} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"   />
+                            <input
+                                type="file"
+                                name="supporting_documents"
+                                onChange={(e) => handleFileChange(e.target.files)}
+                                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"
+                            />
                             
                             <span className="pb-2 mb-2 text-sm text-red-600"></span>
                         </div>
@@ -210,9 +217,9 @@ if(loading)
                     <div className="flex flex-wrap -mx-3 mb-3">
                         <div className="w-full px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-                         Address
+                            Description of Capital
                         </label>
-                        <textarea type="text" name="address" onChange={handleInputChange} value={formValues.address} className="appearance-none h-[15rem] block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password"   />
+                        <textarea type="text" name="discription" onChange={handleInputChange} value={formValues.discription} className="appearance-none h-[15rem] block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password"   />
                         <span className="pb-2 mb-2 text-sm text-red-600"></span>
                         </div>
                     </div>
@@ -240,4 +247,4 @@ if(loading)
   )
 
 };
-export default AddContractor;
+export default AddCommercial;

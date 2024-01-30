@@ -1,17 +1,133 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Link } from "react-router-dom";
 import { useState, useEffect} from "react";
-import {baseURL } from "../../baseurl"
+import {baseURL } from "../../../../baseurl"
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 import { FiEye } from 'react-icons/fi'; 
 import { AiOutlineDelete } from 'react-icons/ai';
-import { TbCurrencyNaira } from 'react-icons/tb'; 
+// import { TbCurrencyNaira } from 'react-icons/tb'; 
+import { BiMessageSquareAdd } from 'react-icons/bi';
 // import { BiMessageSquareAdd } from 'react-icons/bi';
-const AllCashAdvance = () => {
 
-    const [loading, setLoading] = useState(true);
-    // const url = baseURL +`/approved-cashadvance/`;
-    // const urlimg = imgURL;  
+
+const ContractPaymentTableRow = ({ item, index }) => {
+    const ApprovalButton = ({ isApproved }) => {
+        const getButtonStyle = () => {
+          if (isApproved === 'processing') {
+            return 'bg-red-200 text-[10px]';
+          } else if (isApproved === 'approved') {
+            return 'bg-yellow-300';
+          } else if (isApproved === 'reviewed') {
+            return 'bg-green-400';
+          }else if (isApproved === 'audited') {
+            return 'bg-green-400';
+          } else if (isApproved === 'paid') {
+            return 'bg-green-500';
+          } 
+          else {
+            return '';
+          }
+        };
+        const getButtonText = () => {
+          if (isApproved === 'processing') {
+            return 'Processing';
+          } else if (isApproved === 'approved') {
+            return 'Approved';
+            
+          }  else if (isApproved === 'reviewed') {
+            return 'Reviewed';
+            
+          }  else if (isApproved === 'audited') {
+            return 'Audited';
+          } else if (isApproved === 'paid') {
+            return 'Paid';
+            
+          } 
+          else {
+            return '';
+          }
+        };
+              
+        return (     
+          <> <span
+            className={`px-2 inline-flex text-xs leading-5
+                font-semibold rounded-sm  text-gray-800 ${getButtonStyle()}`}>
+                    {getButtonText()}
+              </span>
+                  
+        </>
+        )
+      };
+    // Extracted formatting logic for cleaner code
+    const formattedSubTotal = new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(item.sub_total);
+    const formattedTotalTax = new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(item.total_tax);
+    const formattedGrandTotal = new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(item.grand_total);
+  
+    return (
+      <tr>
+        <td className="px-6 py-4 whitespace-nowrap">
+          <div className="text-xs font-medium text-gray-900">{index + 1}</div>
+        </td>
+        <td className="px-6 py-4 whitespace-nowrap">
+          <p className="text-xs font-medium text-gray-900">{item.payee.company_name}</p>
+        </td>
+        <td className="px-6 py-4 whitespace-nowrap  ">
+                            <p className="text-xs font-medium text-gray-900">{item.payee.tin_number}</p>
+        </td>
+        
+        {/* ... (similar structure for other columns) */}
+        
+        {/* ... (similar structure for other columns) */}
+        
+       
+                       
+                          <td className="px-6 py-4 whitespace-nowrap  ">
+                            <p className="text-xs font-medium text-gray-900">{formattedSubTotal}</p>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap  ">
+                            <p className="text-xs font-medium text-gray-900">{formattedTotalTax}</p>
+                          </td>
+                            
+                          <td className="px-6 py-4 whitespace-nowrap justify-center text-center">
+                            <div className="flex text-xs font-medium text-center text-gray-900">
+                               
+                                {formattedGrandTotal}
+                            </div>
+                            </td>
+                          <td className="px-6 py-4 whitespace-nowrap justify-center text-center">                              
+                            <div className="flex text-xs font-medium text-center text-gray-900"> {item.description}</div>                
+                                                      
+                          </td>
+
+                         
+                        
+
+                          <td className="px-6 text-end py-4 whitespace-nowrap rounded-md">
+                          <ApprovalButton isApproved={item.is_approved} />                           
+                          
+                          </td>
+                         
+
+                          <td className="flex pr-6 py-4 whitespace-nowrap  text-xs font-medium space-x-2">
+                            <Link to={`/dashboard/edit-cashadvance/` +item.id} className="text-indigo-600  hover:text-indigo-900">
+                             
+                               <FiEye size='1.2rem' className='text-green-400 hover:text-indigo-500  text-center justify-center'/>
+                            </Link>
+                            <Link to="#" className="text-indigo-600  hover:text-indigo-900">
+                           
+                            < AiOutlineDelete size='1.2rem' className='text-red-500 hover:text-yellow-400 text-center justify-center'/>
+                            </Link>
+                          </td>
+      </tr>
+                    
+                        
+                       
+    );   
+  };
+
+const AuditedContract = () => {
+
+    const [loading, setLoading] = useState(true);     
     const token = localStorage.getItem('authAccess'); 
     const [viewCashAdvance, setviewCashAdvance] = useState([]);
     const [previousUrl, setpreviousUrl] = useState();
@@ -21,7 +137,7 @@ const AllCashAdvance = () => {
   
 
     const handleSearch = () => {  
-      const url = baseURL +`/approved-cashadvance/?search=${searchQuery}`;  
+      const url = baseURL +`/contract-payment-vouchers/?search=${searchQuery}`;  
         fetch(url,{
           headers: {
             "Content-Type":"application/json",
@@ -74,54 +190,9 @@ const AllCashAdvance = () => {
         }
       };
 
+      
 
-      const ApprovalButton = ({ isApproved }) => {
-        const getButtonStyle = () => {
-          if (isApproved === 'processing') {
-            return 'bg-red-200';
-          } else if (isApproved === 'approved') {
-            return 'bg-yellow-300';
-          } else if (isApproved === 'reviewed') {
-            return 'bg-green-400';
-          }else if (isApproved === 'audited') {
-            return 'bg-green-400';
-          } else if (isApproved === 'paid') {
-            return 'bg-green-500';
-          } 
-          else {
-            return '';
-          }
-        };
-        const getButtonText = () => {
-          if (isApproved === 'processing') {
-            return 'Wait list';
-          } else if (isApproved === 'approved') {
-            return 'Approved';
-            
-          }  else if (isApproved === 'reviewed') {
-            return 'Reviewed';
-            
-          }  else if (isApproved === 'audited') {
-            return 'Audited';
-          } else if (isApproved === 'paid') {
-            return 'Paid';
-            
-          } 
-          else {
-            return '';
-          }
-        };
-              
-        return (     
-          <> <span
-            className={`px-2 inline-flex text-xs leading-5
-                font-semibold rounded-sm  text-gray-800 ${getButtonStyle()}`}>
-                    {getButtonText()}
-              </span>
-                  
-        </>
-        )
-      };
+   
       
 
   return (
@@ -133,7 +204,7 @@ const AllCashAdvance = () => {
                        <div className="flex md:justify-start md:items-end ">
                            <Link  to="/dashboard/add-capital">
                              <h2 class="text-gray-600  mt-2 my-4 md:text-xl text-sm font-semibold text-center">
-                             Latest Cash Advance
+                             Latest Contract 
                              </h2>
                            </Link>
                            
@@ -157,30 +228,36 @@ const AllCashAdvance = () => {
 
                        </div>
     </div>
+
     <div className="flex md:justify-start md:items-start text-center">
                        
                   
       </div>
                 <div class="md:flex items-center justify-between mx-4 mt-2">
 
-                <div className="mb-4 justify-start items-start ">
-                <h2 class="text-gray-600 mx-2 mt-2  md:text-md text-xs font-semibold text-center">
-                          All Cash Advance
-                        </h2>
-                
-                  </div>
-                 
-                  <div className="mb-4 justify-center items-center ">
-                    <input
-                      type="text"
-                      placeholder="Search by date:2023-08-05, title, amount , bank..."
-                      className="border-gray-400 w-[20rem]  hover:border-green-600 border-2 h-7 p-2 text-xs rounded-lg"
-                      value={searchQuery}
-                      onChange={event => setSearchQuery(event.target.value)}
-                    />
-                
-                  </div>
-                  
+                        <div className="flex md:justify-start md:items-end space-x-2">
+                                    <Link  to="/dashboard/add-cantractor-payment"
+                                    className="flex mb-2 text-black h-7   text-center w-[7rem] justify-center p-1 items-center border-2 border-gray-400  hover:border-green-600 rounded-md">
+                                    <div className="flex justify-center items-center" >
+                                            
+                                            <span className="inline-block text-black text-xs  mr-1"> Add New  </span>                            
+                                            <BiMessageSquareAdd className="flex  w-[20px] text-red-700  text-xs text-center" />
+                                        </div>
+                                    </Link>
+                            
+                        </div>
+                    
+                    <div className="mb-4 justify-center items-center ">
+                        <input
+                        type="text"
+                        placeholder="Search by Company, Tin No..."
+                        className="border-gray-400 w-[12rem]  hover:border-green-600 border-2 h-7 p-2 text-xs rounded-lg"
+                        value={searchQuery}
+                        onChange={event => setSearchQuery(event.target.value)}
+                        />
+                    
+                    </div>
+                    
                 </div>
                 {loading ? (
                     <div className="text-center max-w-screen-xl max-h-screen-[72] mx-auto justify-center items-center ">
@@ -210,49 +287,54 @@ const AllCashAdvance = () => {
                   <div className="shadow md:overflow-hidden overflow-x-auto border-b border-gray-200 sm:rounded-lg">
             
                     <table className="min-w-full divide-y divide-gray-200">
-                      <thead className="bg-gray-400">
+                      <thead className="bg-gray-400 w-full">
                         <tr>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
+                            className="px-6 whitespace-nowrap py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
                           >
                             S/N
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
+                            className=" whitespace-nowrap px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
                           >
-                            Staff Name
+                            Contractor
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
+                            className=" w-auto  whitespace-nowrap px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
                           >
-                            IPPIS No
+                            Tin No:
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
+                            className=" whitespace-nowrap px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
                           >
-                            Title
+                            Ammount
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
+                            className=" whitespace-nowrap px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
                           >
-                            Department
+                            Total Tax
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
+                            className=" whitespace-nowrap px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
                           >
-                         Amount 
+                         Grand Total 
+                          </th>
+                          <th
+                            scope="col"
+                            className=" whitespace-nowrap px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
+                          >
+                            Naration
                           </th>
                         
-                        
                           <th
                             scope="col"
-                            className="px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
+                            className=" whitespace-nowrap px-6 py-3 text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider"
                           >
                             Status
                           </th>
@@ -268,54 +350,12 @@ const AllCashAdvance = () => {
                         </tr>
                       </thead>
                       <tbody className="bg-white divide-y divide-gray-200">
-                        {/* {display_Participantsdata} */}
-                    {viewCashAdvance.map((item,i) => (
-                        <tr>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="text-xs font-medium text-gray-900">{i + 1}</div>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap  ">
-                            <p className="text-xs font-medium text-gray-900">{item.user.first_name} {item.user.last_name}</p>
-                            
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap  ">
-                            <p className="text-xs font-medium text-gray-900">{item.user.ipps_number}</p>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap  ">
-                            <p className="text-xs font-medium text-gray-900">{item.title}</p>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap  ">
-                            <p className="text-xs font-medium text-gray-900">{item.user.profile.department}</p>
-                          </td>
-                            
-                          <td className="px-6 py-4 whitespace-nowrap justify-center text-center">                              
-                            <div className="flex text-xs font-medium text-center text-gray-900"> <TbCurrencyNaira className=" text-[16px] text-center"/>{item.formatted_price}</div>                
-                                                      
-                          </td>
+                        {viewCashAdvance.map((item, i) => (
+                            <ContractPaymentTableRow key={item.id} item={item} index={i} />
+                        ))}
+                        </tbody>
 
-                         
-                        
-
-                          <td className="px-6 py-4 whitespace-nowrap rounded-md">
-                          <ApprovalButton isApproved={item.is_approved} />                           
-                          
-                          </td>
-                         
-
-                          <td className="flex pr-6 py-4 whitespace-nowrap  text-xs font-medium space-x-2">
-                            <Link to={`/dashboard/edit-cashadvance/` +item.id} className="text-indigo-600  hover:text-indigo-900">
-                             
-                               <FiEye size='1.5rem' className='text-green-400 hover:text-indigo-500  text-center justify-center'/>
-                            </Link>
-                            <Link to="#" className="text-indigo-600  hover:text-indigo-900">
-                           
-                            < AiOutlineDelete size='1.4rem' className='text-red-500 hover:text-yellow-400 text-center justify-center'/>
-                            </Link>
-                          </td>
-                        </tr>
-
-                    ))}
-                      </tbody>
+                      
                     </table>
 
                     <div className="flex text-sm font-medium justify-center items-center space-x-2 m-2">
@@ -356,4 +396,4 @@ const AllCashAdvance = () => {
   )
 
 };
-export default AllCashAdvance;
+export default AuditedContract;

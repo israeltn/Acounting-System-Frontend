@@ -13,6 +13,8 @@ import { BiSolidChevronDown,BiSolidChevronUp } from 'react-icons/bi';
 import { TbPoint } from 'react-icons/tb';
 import { LiaFileInvoiceSolid } from 'react-icons/lia';
 import { GiTakeMyMoney } from 'react-icons/gi';
+import { FaUsersCog,FaAddressBook  } from "react-icons/fa";
+import { HiOutlineUsers, HiOutlineCash  } from "react-icons/hi";
 
 
 
@@ -362,20 +364,7 @@ const logoutSubmit = () => {
                                 className="text-base no-underline hover:text-gray-900 text-black   font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                                 
                               >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke-width="1.5"
-                                  stroke="currentColor"
-                                  className="w-6 h-6 flex-shrink-0  text-black   group-hover:text-gray-900 transition duration-75"
-                                >
-                                  <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"
-                                  />
-                                </svg>
+                                <HiOutlineUsers  className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-600 transition duration-75"/>
 
                                 <span className={`${status  ? 'ml-3 hover:text-gray-900 text-black   flex-1 whitespace-nowrap' : 'hover:text-gray-900  text-black ml-3'}`}>
                                 Contractors
@@ -390,20 +379,7 @@ const logoutSubmit = () => {
                                 className="text-base no-underline text-gray-600 hover:text-black  font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                                 
                               >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke-width="1.5"
-                                  stroke="currentColor"
-                                  className="w-6 h-6 text-gray-600 flex-shrink-0 group-hover:text-black  transition duration-75"
-                                >
-                                  <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"
-                                  />
-                                </svg>
+                                <HiOutlineUsers  className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-600 transition duration-75"/>
 
                                 <span className={`${status  ? 'ml-3  flex-1 whitespace-nowrap' : ' hover:text-gray-900 ml-3'}`}>
                                 Contractors
@@ -448,20 +424,20 @@ const logoutSubmit = () => {
                       </Link>
                       {activeSidebar === 'cash_office' && isDropdownActive && (
                       <li className=' ml-2 bg-opacity-1 '>
-                        <ul className="  pl-1 pt-1 mx-1  h-auto w-auto">
+                        <ul className="  pl-5 pt-1 mx-1  h-auto w-auto">
                           
-                            <li  className= "p-1   hover:bg-white text-gray-600 hover:text-black rounded-md ">
-                               <NavLink to='capital' className='flex '> <TbPoint size='1.2rem' className='flex pt-1 '/>Capital
+                            <li  className= "p-1   hover:bg-gray-300 text-gray-600 hover:text-black rounded-md ">
+                               <NavLink to='capital' className='flex '> <TbPoint size='1rem' className='flex pt-1 '/>Capital
                                </NavLink>
                             </li>
-                            <li  className=" p-1   hover:bg-white text-gray-600 hover:text-black rounded-md ">
+                            <li  className=" p-1   hover:bg-gray-300 text-gray-600 hover:text-black rounded-md ">
                             
-                               <Link to='over-head' className='flex '> <TbPoint size='1.2rem' className='flex pt-1 '/> Overhead 
+                               <Link to='over-head' className='flex '> <TbPoint size='1rem' className='flex pt-1 '/> Overhead 
                                </Link>
                             </li>
                             
-                            <li className="p-1   hover:bg-white text-gray-600 hover:text-black rounded-md "> 
-                            <Link to='paid-cashadvance' className='flex '> <TbPoint size='1.2rem' className='flex pt-1 '/> Commercial/IGR
+                            <li className="p-1   hover:bg-gray-300 text-gray-600 hover:text-black rounded-md "> 
+                            <Link to='commerial' className='flex '> <TbPoint size='1rem' className='flex pt-1 '/> Commercial/IGR
                                </Link> 
                             </li>
                         
@@ -506,20 +482,20 @@ const logoutSubmit = () => {
                       </Link>
                       {activeSidebar === 'invoicing' && isDropdownActive && (
                       <li className=' ml-2 bg-opacity-1 '>
-                        <ul className="  pl-1 pt-1 mx-1  h-auto w-auto">
+                        <ul className="  pl-4 pt-1 mx-1  h-auto w-auto">
                           
-                            <li  className="p-1   hover:bg-white text-gray-600 hover:text-black rounded-md ">
-                               <NavLink to='cashadvance-list' className='flex '> <TbPoint size='1.2rem' className='flex pt-1 '/>  Payment Voucher
+                            <li  className="p-1   hover:bg-gray-300 text-gray-600 hover:text-black rounded-md ">
+                               <NavLink to='cashadvance-list' className='flex '> <TbPoint size='1rem' className='flex pt-1 '/>  Payment Voucher
                                </NavLink>
                             </li>
-                            <li  className=" p-1   hover:bg-white text-gray-600 hover:text-black rounded-md ">
+                            <li  className=" p-1   hover:bg-gray-300 text-gray-600 hover:text-black rounded-md ">
                             
-                               <Link to='audited-cashadvance' className='flex '> <TbPoint size='1.2rem' className='flex pt-1 '/>Contract Payment
+                               <Link to='cantractor-payment' className='flex '> <TbPoint size='1rem' className='flex pt-1 '/>Contract Payment
                                </Link>
                             </li>
                             
-                            <li className="p-1   hover:bg-white text-gray-600 hover:text-black rounded-md "> 
-                            <Link to='paid-cashadvance' className='flex '> <TbPoint size='1.2rem' className='flex pt-1 '/>Staff Claims
+                            <li className="p-1   hover:bg-gray-300 text-gray-600 hover:text-black rounded-md "> 
+                            <Link to='paid-cashadvance' className='flex '> <TbPoint size='1rem' className='flex pt-1 '/>Staff Claims
                                </Link> 
                             </li>
                         
@@ -537,20 +513,7 @@ const logoutSubmit = () => {
                         onClick={() => handleSidebarClick('advance')}
                         className="text-base no-underlinetext-gray-600 hover:text-black  font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                       >
-                        <svg
-                          className="w-6 h-6text-gray-600 flex-shrink-0 group-hover:text-black transition duration-75"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
-                          />
-                        </svg>
+                       <HiOutlineCash className="w-6 h-6 text-gray-600 flex-shrink-0 group-hover:text-gray-600  transition duration-75" />
 
                         <span className="ml-3 flex-1 whitespace-nowrap hover:text-black">
                           Advance
@@ -564,29 +527,32 @@ const logoutSubmit = () => {
                       </Link>
                       {activeSidebar === 'advance' && isDropdownActive && (
                       <li className=' ml-2 bg-opacity-1 '>
-                        <ul className="  pl-1 pt-1 mx-1  h-auto w-auto">
+                        <ul className=" pl-4 pt-1 mx-1  h-auto w-auto">
                           
-                            <li  className="p-1   hover:bg-white text-gray-600 hover:text-black rounded-md ">
-                               <NavLink to='cashadvance-list' className='flex '> <TbPoint size='1.2rem' className='flex pt-1 '/>Cash Advance List
+                            <li  className="p-1   hover:bg-gray-300 text-gray-600 hover:text-black rounded-md ">
+                               <NavLink to='cashadvance-list' className='flex '> <TbPoint size='1rem' className='flex pt-1 '/>Cash Advance
                                </NavLink>
                             </li>
-                            <li  className=" p-1   hover:bg-white text-gray-600 hover:text-black rounded-md ">
+                            <li  className=" p-1   hover:bg-gray-300 text-gray-600 hover:text-black rounded-md ">
                             
-                               <Link to='audited-cashadvance' className='flex '> <TbPoint size='1.2rem' className='flex pt-1 '/>Audited Cash Advance 
+                               <Link to='audited-cashadvance' className='flex '> <TbPoint size='1rem' className='flex pt-1 '/>Rent Advance 
                                </Link>
-                            </li>
+                            </li>                            
                             
-                            <li className="p-1   hover:bg-white text-gray-600 hover:text-black rounded-md "> 
-                            <Link to='paid-cashadvance' className='flex '> <TbPoint size='1.2rem' className='flex pt-1 '/>   Paid Cash Advance 
+                            <li  className="p-1  hover:bg-gray-300 text-gray-600 hover:text-black rounded-md ">
+                               <NavLink to='all-retirement' className='flex '> <TbPoint size='1rem' className='flex pt-1  '/>Retirement Vouchers
+                               </NavLink>
+                            </li>
+                            <li className="p-1   hover:bg-gray-300 text-gray-600 hover:text-black rounded-md "> 
+                            <Link to='paid-cashadvance' className='flex '> <TbPoint size='1rem' className='flex pt-1 '/>   Others Advance 
                                </Link> 
                             </li>
-                        
                            
                         </ul>
                       </li>
                      )}
                     </li>
-                    <li>
+                    {/* <li>
                       <Link
                         to="#"
                         onClick={() => handleSidebarClick('retirement')}
@@ -618,20 +584,20 @@ const logoutSubmit = () => {
                       </Link>
                       {activeSidebar === 'retirement' && isDropdownActive &&  (
                       <li className=' ml-2 bg-opacity-1 '>
-                        <ul className="  pl-1 pt-1 mx-1  h-auto w-auto">
+                        <ul className=" pl-5 pt-1 mx-1  h-auto w-auto">
                           
-                            <li  className="p-1  hover:bg-white text-gray-600 hover:text-black rounded-md ">
-                               <NavLink to='all-retirement' className='flex '> <TbPoint size='1.5rem' className='flex pt-1  '/>Retirement Vouchers
+                            <li  className="p-1  hover:bg-gray-300 text-gray-600 hover:text-black rounded-md ">
+                               <NavLink to='all-retirement' className='flex '> <TbPoint size='1rem' className='flex pt-1  '/>Retirement Vouchers
                                </NavLink>
                             </li>
-                            <li  className=" p-1   hover:bg-white text-gray-600 hover:text-black rounded-md ">
+                            <li  className=" p-1   hover:bg-gray-300 text-gray-600 hover:text-black rounded-md ">
                             
-                               <Link to='audited-cashadvance' className='flex '> <TbPoint size='1.5rem' className='flex pt-1 '/>Audited Retirement
+                               <Link to='audited-cashadvance' className='flex '> <TbPoint size='1rem' className='flex pt-1 '/>Audited Retirement
                                </Link>
                             </li>
                             
-                            <li className="p-1   hover:bg-white text-gray-600 hover:text-black rounded-md "> 
-                            <Link to='paid-cashadvance' className='flex '> <TbPoint size='1.5rem' className='flex pt-1 '/>   Approved Retirement
+                            <li className="p-1   hover:bg-gray-300 text-gray-600 hover:text-black rounded-md "> 
+                            <Link to='paid-cashadvance' className='flex '> <TbPoint size='1rem' className='flex pt-1 '/>   Approved Retirement
                                </Link> 
                             </li>
                         
@@ -639,27 +605,65 @@ const logoutSubmit = () => {
                         </ul>
                       </li>
                      )}
-                    </li>                 
-                        
+                    </li>                  */}
                     
-                    {/* <li>
+                    <li>
                       <Link
                         to="#"
-                        className="text-base no-underline text-white  hover:text-black font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
+                        onClick={() => handleSidebarClick('bootkeeping')}
+                        className="ml-[2px] text-base no-underline text-gray-600 hover:text-black  font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                       >
                         <svg
-                          className="w-6 h-6 text-white  flex-shrink-0 group-hover:text-black transition duration-75"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
+                          className="w-6 h-6text-gray-600 flex-shrink-0 group-hover:text-black transition duration-75"
                           xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
                         >
-                          <path d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"></path>
-                          <path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path>
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
+                          />
                         </svg>
-                        <span className="ml-3 flex-1 whitespace-nowrap">Aproved Retirement</span>
-                        <span className="bg-gray-200 text-gray-800 ml-3 text-sm font-medium inline-flex items-center justify-center px-2 rounded-full"></span>
+
+                        <span className="ml-3 flex-1 whitespace-nowrap hover:text-black">
+                        Book Keeping 
+                        </span>
+                        {retirementOpen ===true ? <BiSolidChevronUp size='1.2rem' className='text-gray-600 hover:text-black'/> : 
+                           <BiSolidChevronDown size='1.2rem' className='text-gray-600 hover:text-black'/>
+                        }
+                       
+
+                    
                       </Link>
-                    </li> */}
+                      {activeSidebar === 'bootkeeping' && isDropdownActive &&  (
+                      <li className=' ml-2 bg-opacity-1 '>
+                        <ul className="pl-5 pt-1 mx-1  h-auto w-auto">
+                          
+                            <li  className="p-1  hover:bg-gray-300 text-gray-600 hover:text-black rounded-md ">
+                               <NavLink to='all-retirement' className='flex '> <TbPoint size='1rem' className='flex pt-1  '/>General ledger
+                               </NavLink>
+                            </li>
+                            <li  className=" p-1   hover:bg-gray-300 text-gray-600 hover:text-black rounded-md ">
+                            
+                               <Link to='audited-cashadvance' className='flex '> <TbPoint size='1rem' className='flex pt-1 '/>Traial Balance
+                               </Link>
+                            </li>
+                            
+                            <li className="p-1   hover:bg-gray-300 text-gray-600 hover:text-black rounded-md "> 
+                            <Link to='paid-cashadvance' className='flex '> <TbPoint size='1rem' className='flex pt-1 '/>   Financial Balance
+                               </Link> 
+                            </li>
+                        
+                           
+                        </ul>
+                      </li>
+                     )}
+                    </li> 
+                    
+                                   
 
                    
 
@@ -690,26 +694,8 @@ const logoutSubmit = () => {
 
                   </ul>
                       {/* Report */}
-                  <div className="space-y- pt-2">
-                    <Link
-                      to="#"
-                      target="_blank"
-                      className="text-base no-underline text-gray-600 hover:text-black font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2"
-                    >
-                      <svg
-                        className="w-6 h-6 text-gray-600flex-shrink-0 group-hover:text-black transition duration-75"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z"
-                          clip-rule="evenodd"
-                        ></path>
-                      </svg>
-                      <span className="ml-3">Report </span>
-                    </Link>
+                  <div className="">
+                 
                   </div>
 
                 </div>

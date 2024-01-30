@@ -41,9 +41,15 @@ import AddCapital from "./pages/dashboard/cash-office/capital/AddCapital"
 import OverheadList from "./pages/dashboard/cash-office/overhead/AllOverhead"
 import AddOverhead from "./pages/dashboard/cash-office/overhead/AddOverhead"
 
-
 import CantractorList from "./pages/dashboard/contractor/AllContractors"
 import AddCantractor from "./pages/dashboard/contractor/AddContractor"
+
+import CommerialList from "./pages/dashboard/cash-office/commercial/AllCommercial"
+import AddCommercial from "./pages/dashboard/cash-office/commercial/Addcommercial"
+
+import CantractorPaymentList from "./pages/dashboard/invoicing/contract_payment/AllContractPayment"
+import AddCantractorPayment from "./pages/dashboard//invoicing/contract_payment/AddContractPayment"
+import ApprovedCantractorPayment from "./pages/dashboard//invoicing/contract_payment/ApprovedContract"
 
 
 
@@ -87,9 +93,15 @@ function App() {
                         <Route path = "over-head"element = { < OverheadList /> }/>
                         <Route path = "add-overhead"element = { < AddOverhead /> }/> 
 
-                        <Route path = "cantractors"element = { < CantractorList /> }/>
-                        <Route path = "add-cantractor"element = { < AddCantractor /> }/> 
+                        <Route path = "commerial"element = { < CommerialList /> }/>
+                        <Route path = "add-commerial"element = { < AddCommercial /> }/>
+
+                         <Route path = "cantractors"element = { < CantractorList /> }/>
+                        <Route path = "add-cantractor"element = { < AddCantractor /> }/>  
                         
+                        <Route path = "cantractor-payment"element = { < CantractorPaymentList /> }/>
+                        <Route path = "add-cantractor-payment"element = { < AddCantractorPayment /> }/>
+                        <Route path = "approved-cantractor"element = { < ApprovedCantractorPayment /> }/>  
                         
 
         </Route>
