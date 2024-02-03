@@ -51,6 +51,10 @@ import CantractorPaymentList from "./pages/dashboard/invoicing/contract_payment/
 import AddCantractorPayment from "./pages/dashboard//invoicing/contract_payment/AddContractPayment"
 import ApprovedCantractorPayment from "./pages/dashboard//invoicing/contract_payment/ApprovedContract"
 
+import PaymentVourcherList from "./pages/dashboard/invoicing/payment_vourcher/AllPaymentVoucher"
+import AddPaymentVourcher from "./pages/dashboard//invoicing/payment_vourcher/AddPaymentVoucher"
+import ApprovedPaymentVourcher from "./pages/dashboard//invoicing/payment_vourcher/ApprovedContract"
+
 
 
 import { ToastContainer } from 'react-toastify';
@@ -102,6 +106,10 @@ function App() {
                         <Route path = "cantractor-payment"element = { < CantractorPaymentList /> }/>
                         <Route path = "add-cantractor-payment"element = { < AddCantractorPayment /> }/>
                         <Route path = "approved-cantractor"element = { < ApprovedCantractorPayment /> }/>  
+
+                        <Route path = "payment-vourcher"element = { < PaymentVourcherList /> }/>
+                        <Route path = "add-payment-vourcher"element = { < AddPaymentVourcher /> }/>
+                        <Route path = "approved-payment-vourcher"element = { < ApprovedPaymentVourcher /> }/>  
                         
 
         </Route>

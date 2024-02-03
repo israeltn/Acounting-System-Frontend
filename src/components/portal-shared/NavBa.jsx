@@ -485,7 +485,7 @@ const logoutSubmit = () => {
                         <ul className="  pl-4 pt-1 mx-1  h-auto w-auto">
                           
                             <li  className="p-1   hover:bg-gray-300 text-gray-600 hover:text-black rounded-md ">
-                               <NavLink to='cashadvance-list' className='flex '> <TbPoint size='1rem' className='flex pt-1 '/>  Payment Voucher
+                               <NavLink to='payment-vourcher' className='flex '> <TbPoint size='1rem' className='flex pt-1 '/>  Payment Voucher
                                </NavLink>
                             </li>
                             <li  className=" p-1   hover:bg-gray-300 text-gray-600 hover:text-black rounded-md ">
